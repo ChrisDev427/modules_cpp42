@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:08:17 by chris             #+#    #+#             */
-/*   Updated: 2023/07/19 18:08:10 by chris            ###   ########.fr       */
+/*   Updated: 2023/07/20 18:15:23 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,11 @@ public:
     Contact(void);
     ~Contact(void);
 
-    char firstName[256];
-    char lastName[256];
-    char nickName[256];
-    char phoneNumber[256];
-    char darkSecret[256];
-
+    std::string firstName;
+    std::string lastName;
+    std::string nickName;
+    std::string phoneNumber;
+    std::string darkSecret;
     
     static int  getNbInst(void);
 
@@ -53,21 +52,25 @@ public:
     PhoneBook(void);
     ~PhoneBook(void);
 
-    char    cIn[128];
-    int     choice;
-    Contact     *contactsTab[8];
-    int     contactNb;
+    char        cIn[128];
+    int         choice;
+    Contact     contactsTab[8];
+    int         contactNb;
 
 
 
     void    initChoice(char *cIn);
-    void    initContact(int contNb);
+    void    initContact(PhoneBook *ptr, int contNb);
     void    fillForm(Contact *ptr);
-    void    searchContact(void);
+    void    searchContact(PhoneBook *ptr);
     // void    printContact(Contact *ptr);
     
 
 private:
+
+
+    void    setContactToPrint(Contact *ptr);
+    std::string _buffToPrint[3];
 
     
 };

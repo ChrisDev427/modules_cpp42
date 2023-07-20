@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:08:11 by chris             #+#    #+#             */
-/*   Updated: 2023/07/19 17:16:34 by chris            ###   ########.fr       */
+/*   Updated: 2023/07/20 18:15:02 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ int main(int ac, char **av)
             switch (book.choice)
             {
             case 1:
-                book.initContact(book.contactNb);
+                book.initContact(&book, book.contactNb);
+                
                 break;
             case 2:
-                book.searchContact();
+                book.searchContact(&book);
                 break;
             case 3:
                 std::cout << "Goodbye Bro\n" << std::endl;

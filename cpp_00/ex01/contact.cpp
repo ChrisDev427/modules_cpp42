@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:28:09 by chris             #+#    #+#             */
-/*   Updated: 2023/07/19 15:33:52 by chris            ###   ########.fr       */
+/*   Updated: 2023/07/20 14:32:31 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "phonebook.hpp"
 
 Contact::Contact(void) {
+
 
     Contact::_nbInst += 1;
 
