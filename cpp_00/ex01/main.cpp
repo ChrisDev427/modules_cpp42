@@ -6,39 +6,53 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:08:11 by chris             #+#    #+#             */
-/*   Updated: 2023/07/20 18:15:02 by chris            ###   ########.fr       */
+/*   Updated: 2023/07/21 16:57:01 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
+static void printTitle(void) {
+    
+    system("clear");
+    std::cout << B_CYAN << "\n\n   ****************************" << std::endl;
+    std::cout << "   *** Welcome To PhoneBook ***" << std::endl;
+    std::cout << "   ****************************\n\n" << RESET << std::endl;
+    
+}
+
 int main(int ac, char **av)
 {
     (void)av;
     PhoneBook   book;
+    printTitle();
     if (ac == 1){
 
-        std::cout << "\n*** Welcome to PhoneBook ***\n" << std::endl;
         while (1) {
+            
+            std::cout << B_CYAN << "Enter 'ADD', 'SEARCH' or 'EXIT' : " << GREEN;
+            std::getline(std::cin, book.cIn);
 
-            std::cout << "Enter 'ADD', 'SEARCH' or 'EXIT' : ";
-            std::cin >> book.cIn;
-            book.initChoice(book.cIn);
+            book.initChoice();
+           
             switch (book.choice)
             {
             case 1:
-                book.initContact(&book, book.contactNb);
+                book.initContact();
                 
                 break;
             case 2:
                 book.searchContact(&book);
                 break;
             case 3:
-                std::cout << "Goodbye Bro\n" << std::endl;
+                system("clear");
+                std::cout << GREEN << "\n       *** Goodbye Bro ***\n" << RESET <<std::endl;
+                sleep(2);
+                system("clear");
                 exit (0);
                 break;
             default:
-                std::cout << "Invalid choice !" << std::endl;
+                std::cout << RED << "Invalid choice !" << RESET << std::endl;
                 break;
             }
         }
