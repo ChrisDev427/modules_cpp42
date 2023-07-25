@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:08:17 by chris             #+#    #+#             */
-/*   Updated: 2023/07/21 16:57:09 by chris            ###   ########.fr       */
+/*   Updated: 2023/07/23 09:31:32 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ public:
 
     void    initChoice(void);
     void    initContact(void);
-    void    searchContact(PhoneBook *ptr);
+    void    searchContact(void);
 
 private:
 

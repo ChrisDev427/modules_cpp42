@@ -6,13 +6,13 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:28:09 by chris             #+#    #+#             */
-/*   Updated: 2023/07/21 17:00:53 by chris            ###   ########.fr       */
+/*   Updated: 2023/07/23 09:36:16 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
-PhoneBook::PhoneBook(void) {
+PhoneBook::PhoneBook( void ) {
 
     PhoneBook::contactNb = 0;
     PhoneBook::contactId = 0;
@@ -22,106 +22,106 @@ PhoneBook::PhoneBook(void) {
     return;
 }
 
-PhoneBook::~PhoneBook(void) {
+PhoneBook::~PhoneBook( void ) {
     
     return;
 }
 
 
-void    PhoneBook::initChoice(void) {
+void    PhoneBook::initChoice( void ) {
 
-    if (this->cIn == "ADD")
+    if ( this->cIn == "ADD" )
         this->choice = 1;
-    else if (this->cIn == "SEARCH")
+    else if ( this->cIn == "SEARCH" )
         this->choice = 2;
-    else if (this->cIn == "EXIT")
+    else if ( this->cIn == "EXIT" )
         this->choice = 3;
 	this->cIn.clear();
     
 }
 
-void    PhoneBook::initContact(void) {
+void    PhoneBook::initContact( void ) {
     
-    this->fillForm(&(this->contactsTab[this->contactId]));
-    if (this->contactNb <= 7)
+    this->fillForm( &( this->contactsTab[this->contactId] ) );
+    if ( this->contactNb <= 7 )
         this->contactNb++;
     this->contactId++;
-    if (this->contactId == 8)
+    if ( this->contactId == 8 )
         this->contactId = 0;
     
     return;
 }
 
-void    PhoneBook::fillForm(Contact *ptr) {
+void    PhoneBook::fillForm( Contact *ptr ) {
 
     std::cout << B_GRAY << "first name : " B_CYAN;
-    std::getline(std::cin, ptr->firstName);
+    std::getline( std::cin, ptr->firstName );
     std::cout << B_GRAY << "last name : " B_CYAN;
-    std::getline(std::cin, ptr->lastName);
+    std::getline( std::cin, ptr->lastName );
     std::cout << B_GRAY << "nick name : " B_CYAN;
-    std::getline(std::cin, ptr->nickName);
+    std::getline( std::cin, ptr->nickName );
     std::cout << B_GRAY << "phone number : " B_CYAN;
-    std::getline(std::cin, ptr->phoneNumber);
+    std::getline( std::cin, ptr->phoneNumber );
     std::cout << B_GRAY << "dark secret : " B_CYAN;
-    std::getline(std::cin, ptr->darkSecret);
+    std::getline( std::cin, ptr->darkSecret );
 	
     return;
 }
 
-void    PhoneBook::setContactToPrint(Contact *ptr) {
+void    PhoneBook::setContactToPrint( Contact *ptr ) {
 
     size_t len;
 
     PhoneBook::_buffToPrint[0] = ptr->firstName;
     PhoneBook::_buffToPrint[1] = ptr->lastName;
     PhoneBook::_buffToPrint[2] = ptr->nickName;
-    for (int i = 0; i < 3; i++) {
+    for ( int i = 0; i < 3; i++ ) {
 
         len = PhoneBook::_buffToPrint[i].size();
-        if (len < 10)
-            PhoneBook::_buffToPrint[i].insert(0, 10 - len, ' ');
-        else if (len > 10) {
-            PhoneBook::_buffToPrint[i].replace(9, 1, ".");
-            PhoneBook::_buffToPrint[i] = PhoneBook::_buffToPrint[i].substr(0, 10);
+        if ( len < 10 )
+            PhoneBook::_buffToPrint[i].insert( 0, 10 - len, ' ' );
+        else if ( len > 10 ) {
+            PhoneBook::_buffToPrint[i].replace( 9, 1, "." );
+            PhoneBook::_buffToPrint[i] = PhoneBook::_buffToPrint[i].substr( 0, 10 );
         }
     }
 }
 
-void    PhoneBook::searchContact(PhoneBook *ptr) {
+void    PhoneBook::searchContact( void ) {
 
-    if (PhoneBook::contactNb == 0) {
+    if ( this->contactNb == 0 ) {
         std::cout << RED << "       PhoneBook is empty\n      Please ADD a contact" << RESET << std::endl;
         return;
     }
     std::cout << YELLOW << "\n|     index|first name| last name|  nickname" << "|" << std::endl;
            
-    for (int i = 0; i < ptr->contactNb; i++) {
+    for ( int i = 0; i < this->contactNb; i++ ) {
 
         std::cout << "|         "<< i+1 << "|";
-        PhoneBook::setContactToPrint(&ptr->contactsTab[i]);
-        std::cout << PhoneBook::_buffToPrint[0] << "|";
-        std::cout << PhoneBook::_buffToPrint[1] << "|";
-        std::cout << PhoneBook::_buffToPrint[2] << "|" << std::endl;
+        this->setContactToPrint( &this->contactsTab[i] );
+        std::cout << this->_buffToPrint[0] << "|";
+        std::cout << this->_buffToPrint[1] << "|";
+        std::cout << this->_buffToPrint[2] << "|" << std::endl;
     }
     std::cout << std::endl;
-    PhoneBook::printContact();
+    this->printContact();
 
     return;
 }
 
-void    PhoneBook::printContact(void) {
+void    PhoneBook::printContact( void ) {
 
     int choice;
 
-    while (1) {
+    while ( 1 ) {
 
         std::cout << GREEN << "Enter the contact number you want to see or 0 to go back " << B_CYAN;
         std::cin >> choice;
 		std::cin.ignore();
-		if (choice == 0)
+		if ( choice == 0 )
 			return;
         choice -= 1;
-        if (choice < PhoneBook::contactNb) {
+        if ( choice < this->contactNb ) {
             std::cout << B_GRAY << "  First Name:    " << YELLOW << PhoneBook::contactsTab[choice].firstName << std::endl;
             std::cout << B_GRAY << "   Last Name:    " << YELLOW << PhoneBook::contactsTab[choice].lastName << std::endl;
             std::cout << B_GRAY << "   Nick Name:    " << YELLOW << PhoneBook::contactsTab[choice].nickName << std::endl;

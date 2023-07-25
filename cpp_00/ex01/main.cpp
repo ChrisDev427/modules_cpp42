@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:08:11 by chris             #+#    #+#             */
-/*   Updated: 2023/07/21 16:57:01 by chris            ###   ########.fr       */
+/*   Updated: 2023/07/23 09:31:26 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,36 @@ static void printTitle(void) {
     
 }
 
-int main(int ac, char **av)
-{
-    (void)av;
+int main( int ac, char **av ) {
+
+    ( void )av;
     PhoneBook   book;
     printTitle();
-    if (ac == 1){
+    
+    if ( ac == 1 ){
 
-        while (1) {
+        while ( 1 ) {
             
             std::cout << B_CYAN << "Enter 'ADD', 'SEARCH' or 'EXIT' : " << GREEN;
-            std::getline(std::cin, book.cIn);
+            std::getline( std::cin, book.cIn );
 
             book.initChoice();
            
-            switch (book.choice)
+            switch ( book.choice )
             {
             case 1:
                 book.initContact();
                 
                 break;
             case 2:
-                book.searchContact(&book);
+                book.searchContact ();
                 break;
             case 3:
-                system("clear");
+                system( "clear" );
                 std::cout << GREEN << "\n       *** Goodbye Bro ***\n" << RESET <<std::endl;
-                sleep(2);
-                system("clear");
-                exit (0);
+                sleep( 2 );
+                system( "clear" );
+                exit ( 0 );
                 break;
             default:
                 std::cout << RED << "Invalid choice !" << RESET << std::endl;
@@ -58,8 +59,10 @@ int main(int ac, char **av)
         }
     }
     else {
+
         std::cout << "Error: phonebook don't need any argument" << std::endl;
         return -1;
     }
+
     return 0;
 }
