@@ -1,16 +1,14 @@
 # Makefile
 
 
-NAME = fight
+NAME = Harl
 
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -I #-fsanitize=address
 
-SRCS = main.cpp \
-		HumanA.cpp \
-		HumanB.cpp \
-		Weapon.cpp
+SRCS =  *.cpp
+		
 
 OBJECT_FILES = $(SRCS:.cpp=.o)
 HEADER = -I

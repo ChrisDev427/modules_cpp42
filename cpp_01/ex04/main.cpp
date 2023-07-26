@@ -6,32 +6,24 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 08:58:57 by chris             #+#    #+#             */
-/*   Updated: 2023/07/25 12:01:21 by chris            ###   ########.fr       */
+/*   Updated: 2023/07/25 16:59:51 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
-#include "HumanA.hpp"
-#include "HumanB.hpp"
-#include <string>
+#include "utils.hpp"
+#include "FileCopy.hpp"
 
 
-int main() {
-    {
-        Weapon  club = Weapon("crude spiked club");
+int main(int ac, char **av) {
+    
+    if ( ac == 4) {
 
-        HumanA  bob("Bob", club);
-        bob.attack();
-        club.setType("some other type of club");
-        bob.attack();
+       FileCopy inst(av[1], av[2], av[3]);
+       inst.fileCopy(inst.ifs, inst.ofs);
+
     }
-    {
-        Weapon  club = Weapon("crude spiked club");
-        HumanB  jim("Jim");
-        jim.setWeapon(club);
-        jim.attack();
-        club.setType("some other type of club");
-        jim.attack();
-    }
+    else
+        error("this program need 3 args", NULL);
+    
     return 0; 
 }

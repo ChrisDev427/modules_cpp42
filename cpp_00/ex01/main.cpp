@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:08:11 by chris             #+#    #+#             */
-/*   Updated: 2023/07/23 09:31:26 by chris            ###   ########.fr       */
+/*   Updated: 2023/07/25 11:51:51 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ int main( int ac, char **av ) {
     if ( ac == 1 ){
 
         while ( 1 ) {
+
+		if (std::cin.eof())
+			exit (1);
             
             std::cout << B_CYAN << "Enter 'ADD', 'SEARCH' or 'EXIT' : " << GREEN;
             std::getline( std::cin, book.cIn );

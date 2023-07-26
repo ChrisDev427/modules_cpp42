@@ -6,32 +6,35 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 08:58:57 by chris             #+#    #+#             */
-/*   Updated: 2023/07/25 12:01:21 by chris            ###   ########.fr       */
+/*   Updated: 2023/07/26 08:46:02 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
-#include "HumanA.hpp"
-#include "HumanB.hpp"
-#include <string>
+#include "utils.hpp"
+#include "Harl.hpp"
 
 
-int main() {
-    {
-        Weapon  club = Weapon("crude spiked club");
+int main( int ac, char **av ) {
+    
+    if ( ac == 2 ) {
 
-        HumanA  bob("Bob", club);
-        bob.attack();
-        club.setType("some other type of club");
-        bob.attack();
+        system( "clear" );
+        int nbComplains = atoi( av[1] );
+        Harl    inst;
+        std::srand( static_cast<unsigned int>( std::time(0) ) );
+
+        for ( int i = 0; i < nbComplains; i++) {
+        
+            int randomIndex = std::rand() % 4;
+            inst.complain( inst.levels[randomIndex] );
+            std::cout << std::endl;
+            usleep(300000);
+
+        }
+
     }
-    {
-        Weapon  club = Weapon("crude spiked club");
-        HumanB  jim("Jim");
-        jim.setWeapon(club);
-        jim.attack();
-        club.setType("some other type of club");
-        jim.attack();
-    }
+    else
+        error( "This program need one argument\nHow many times do you want Harl to complain?", NULL );
+    
     return 0; 
 }

@@ -6,32 +6,25 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 08:58:57 by chris             #+#    #+#             */
-/*   Updated: 2023/07/25 12:01:21 by chris            ###   ########.fr       */
+/*   Updated: 2023/07/26 09:10:35 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
-#include "HumanA.hpp"
-#include "HumanB.hpp"
-#include <string>
+#include "utils.hpp"
+#include "Harl.hpp"
 
 
-int main() {
-    {
-        Weapon  club = Weapon("crude spiked club");
+int main( int ac, char **av ) {
+    
+    if ( ac == 2 ) {
 
-        HumanA  bob("Bob", club);
-        bob.attack();
-        club.setType("some other type of club");
-        bob.attack();
+        Harl    inst;
+        inst.complain( av[1] );
+          
     }
-    {
-        Weapon  club = Weapon("crude spiked club");
-        HumanB  jim("Jim");
-        jim.setWeapon(club);
-        jim.attack();
-        club.setType("some other type of club");
-        jim.attack();
-    }
+
+    else
+        error( "This program need one argument", NULL );
+    
     return 0; 
 }

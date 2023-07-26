@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   utils.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/24 18:30:41 by chris             #+#    #+#             */
-/*   Updated: 2023/07/25 11:00:39 by chris            ###   ########.fr       */
+/*   Created: 2023/07/25 14:32:19 by chris             #+#    #+#             */
+/*   Updated: 2023/07/25 17:00:49 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#ifndef UTILS_HPP
+# define UTILS_HPP
+# include <string>
+# include <iostream>
+# include <fstream>
 
-HumanA::HumanA( std::string name, Weapon& ref ) : weapon( ref ), name( name ) {
+void    error(std::string  const s1, const char *s2);
 
-
-
-}
-
-
-HumanA::~HumanA( void ) {
-
-
-
-}
-
-
-void    HumanA::attack( void ) {
-
-    std::cout << this->name << " ";
-    std::cout << "attacks with their ";
-    std::cout << weapon.getType() << std::endl;
-}
-
-//<name> attacks with their <weapon type>
+#endif /* UTILS_HPP */
