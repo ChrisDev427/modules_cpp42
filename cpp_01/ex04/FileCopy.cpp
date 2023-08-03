@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 14:36:15 by chris             #+#    #+#             */
-/*   Updated: 2023/07/25 17:04:24 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/02 11:33:07 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@ FileCopy::FileCopy( char *file, char *str1, char *str2 ) : s1(str1), s2(str2), _
 
     if ( s1.length() == 0 )
         error( "second arg is invalid", NULL );
+    if ( s1 == s2 )
+        error( "args 2 & 3 must be different", NULL );
+
     _outFileName += ".replace";
     ifs = OpenRead( file );
     ofs = OpenWrite( _outFileName );
+   
     
 }
 
@@ -59,12 +63,13 @@ void    FileCopy::fileCopy( std::ifstream&   inFile, std::ofstream&   outFile ) 
     while ( std::getline( inFile, line ) ) {
 
         size_t pos = 0;
-        while ( ( pos = line.find(this->s1), pos ) != std::string::npos ) {
-            line.erase( pos, this->s1.length() );
-            line.insert( pos, this->s2 );
+        while ( ( pos = line.find(this->s1, pos)) != std::string::npos ) {
+            line.erase( pos, s1.length() );
+            line.insert( pos, s2 );
+            pos += s2.length();
         }
-        outFile << line << std::endl;
-    }
 
+        outFile << line << std::endl;           
+    }
 
 }

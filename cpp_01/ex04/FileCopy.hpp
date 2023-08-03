@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 14:36:11 by chris             #+#    #+#             */
-/*   Updated: 2023/07/25 17:01:27 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/02 11:03:29 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ public:
     void            fileCopy( std::ifstream&   inFile, std::ofstream&   outFile );
 private:
 
+   
     std::string     _outFileName;
     std::ifstream   OpenRead( const char *file );
     std::ofstream   OpenWrite( std::string fileName );

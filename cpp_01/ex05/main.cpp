@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 08:58:57 by chris             #+#    #+#             */
-/*   Updated: 2023/07/26 08:46:02 by chris            ###   ########.fr       */
+/*   Updated: 2023/07/31 18:19:48 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int main( int ac, char **av ) {
             int randomIndex = std::rand() % 4;
             inst.complain( inst.levels[randomIndex] );
             std::cout << std::endl;
-            usleep(300000);
+            std::this_thread::sleep_for(std::chrono::microseconds(800000));
 
         }
 
     }
     else
-        error( "This program need one argument\nHow many times do you want Harl to complain?", NULL );
+        error( "This program need one argument\nHow many times do you want Harl to complain ?", NULL );
     
     return 0; 
 }

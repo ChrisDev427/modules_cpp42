@@ -1,7 +1,7 @@
 # Makefile
 
 
-NAME = SedIsForLoosers
+NAME = cpyReplace
 
 
 CC = c++

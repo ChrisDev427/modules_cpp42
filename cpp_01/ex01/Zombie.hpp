@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 08:59:18 by chris             #+#    #+#             */
-/*   Updated: 2023/07/24 17:13:12 by chris            ###   ########.fr       */
+/*   Updated: 2023/07/31 11:24:01 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # define RED     "\033[1;31m"
 # define GREEN   "\033[32m"
 # define B_CYAN    "\033[1;36m"
-
 
 class Zombie {
 
@@ -36,11 +35,7 @@ private:
 
 };
 
-
 Zombie* zombieHorde( int N, std::string name );
-
-
-
 
 
 #endif /*ZOMBIE_HPP*/

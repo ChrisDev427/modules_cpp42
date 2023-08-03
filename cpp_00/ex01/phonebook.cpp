@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:28:09 by chris             #+#    #+#             */
-/*   Updated: 2023/07/23 09:36:16 by chris            ###   ########.fr       */
+/*   Updated: 2023/07/31 11:14:53 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,3 @@ void    PhoneBook::printContact( void ) {
             std::cout << RED << "Error: wrong number " << RESET << std::endl;
     }
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 14:32:19 by chris             #+#    #+#             */
-/*   Updated: 2023/07/26 08:31:50 by chris            ###   ########.fr       */
+/*   Updated: 2023/07/31 18:18:23 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <fstream>
 # include <cstdlib>
 # include <ctime>
-# include <unistd.h>
+# include <thread>
 # define RESET   "\033[0m"
 # define RED     "\033[1;31m"
 # define GREEN   "\033[32m"
