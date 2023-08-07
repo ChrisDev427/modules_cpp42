@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:37:13 by chris             #+#    #+#             */
-/*   Updated: 2023/08/03 15:54:46 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/03 17:17:18 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ DiamondTrap::DiamondTrap( void ) {
 
     std::cout << GREEN << "DiamondTrap Default Constructor called" << RESET << std::endl;
     
+    name = "defaultName";
+    hit = 100;
+    energy = 50;
+    attackDamage = 30;
     
-
     return;
-
 }
 
 DiamondTrap::DiamondTrap( std::string dName ) : ClapTrap(dName + "_clap_name"), FragTrap(dName), ScavTrap(dName), _name( dName ) {

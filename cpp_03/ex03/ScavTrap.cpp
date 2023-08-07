@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:37:13 by chris             #+#    #+#             */
-/*   Updated: 2023/08/03 15:54:39 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/03 17:06:43 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 ScavTrap::ScavTrap( void ) {
 
     std::cout << GREEN << "ScavTrap Default Constructor called" << RESET << std::endl;
-    // hit = 100;
-    // energy = 50;
-    // attackDamage = 20;
+
+    name = "defaultName";
+    hit = 100;
+    energy = 50;
+    attackDamage = 20;
     return;
 }
 
@@ -27,11 +29,7 @@ ScavTrap::ScavTrap( std::string sName ) : ClapTrap(sName) {
 
     std::cout << GREEN << "ScavTrap Parametric Constructor called " << RESET;
     std::cout << B_GRAY << ITAL << "(instance -> [" << sName << "])\n" << RESET << NORM <<std::endl;
-    // name = sName;
-    // hit = 100;
-    // energy = 50;
-    // attackDamage = 20;
-
+   
     ClapTrap::hit = 100;
     ClapTrap::energy = 50;
     ClapTrap::attackDamage = 20;
@@ -122,47 +120,6 @@ void ScavTrap::guardGate( void ) {
     std::cout << B_RED << "    Don't mess with " << name << " !!!" << RESET << std::endl;
     std::cout << ORANGE << "****************************************************\n" << std::endl;
 
-
-
 }
 
-// void ScavTrap::takeDamage( unsigned int amount ) {
-
-//     if ( _hit > 0 && _energy > 0 ) {
-
-//         std::cout << B_YELLOW << "ScavTrap "<< _name << " took " << amount << " damages from someone" << RESET << std::endl;
-//         _hit -= amount;
-//         std::cout << ITAL B_GRAY"\t\t\t\t" << _name << " (hit[" << _hit << "] energy[" << _energy << "])\n" << NORM << std::endl;
-
-//         if ( _hit <= 0 )
-//             _hit = 0;
-//     }
-//     else {
-//         if ( _hit == 0 )
-//             std::cout << RED << "ScavTrap "<< _name << " has no more hit" << RESET << std::endl;
-//         if ( _energy == 0 )
-//             std::cout << RED << "ScavTrap "<< _name << " has no more energy" << RESET << std::endl;
-//     }
-//     std::this_thread::sleep_for(std::chrono::microseconds(400000));
-// }
-
-// void ScavTrap::beRepaired( unsigned int amount ) {
-
-//     if ( _hit > 0 && _energy > 0 ) {
-        
-//         std::cout << B_YELLOW << "ScavTrap "<< _name << " repairs [-" << amount << " energy] [+" << amount << " hits]" << RESET << std::endl;
-//         _hit += amount;
-//         _energy -= amount;
-//         std::cout << ITAL B_GRAY"\t\t\t\t" << _name << " (hit[" << _hit << "] energy[" << _energy << "])\n" << NORM << std::endl;
-//         if ( _energy <= 0 )
-//             _energy = 0;
-//     }
-//     else {
-//         if ( _hit == 0 )
-//             std::cout << RED << "ScavTrap "<< _name << " has no more hit" << RESET << std::endl;
-//         if ( _energy == 0 )
-//             std::cout << RED << "ScavTrap "<< _name << " has no more energy" << RESET << std::endl;
-//     }
-//     std::this_thread::sleep_for(std::chrono::microseconds(400000));
-// }
 

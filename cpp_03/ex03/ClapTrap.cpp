@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:37:13 by chris             #+#    #+#             */
-/*   Updated: 2023/08/03 16:30:23 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/03 17:23:57 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void ClapTrap::takeDamage( unsigned int amount ) {
 
     if ( this->hit > 0 && this->energy > 0 ) {
 
-        std::cout << B_YELLOW << "ClapTrap "<< name << " took " << amount << " damages from someone" << RESET << std::endl;
+        std::cout << B_YELLOW << "ClapTrap "<< name << " took " << amount << " damages" << RESET << std::endl;
         this->hit -= amount;
         std::cout << ITAL B_GRAY"\t\t\t\t" << name << " (hit[" << hit << "] energy[" << energy << "])\n" << NORM << std::endl;
 
@@ -140,9 +140,9 @@ void ClapTrap::beRepaired( unsigned int amount ) {
 
     if ( hit > 0 && energy > 0 ) {
         
-        std::cout << B_YELLOW << "ClapTrap "<< name << " repairs [-" << amount << " energy] [+" << amount << " hits]" << RESET << std::endl;
+        std::cout << B_YELLOW << "ClapTrap "<< name << " repairs [-1 energy] [+" << amount << " hits]" << RESET << std::endl;
         hit += amount;
-        energy -= amount;
+        energy--;
         std::cout << ITAL B_GRAY"\t\t\t\t" << name << " (hit[" << hit << "] energy[" << energy << "])\n" << NORM << std::endl;
         if ( energy <= 0 )
             energy = 0;
