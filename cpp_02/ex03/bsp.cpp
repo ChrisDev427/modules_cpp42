@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 09:33:10 by chris             #+#    #+#             */
-/*   Updated: 2023/07/31 10:45:33 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/08 14:01:11 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ bool bsp( Point const a, Point const b, Point const c, Point const point ) {
     std::cout << GREEN << "a" << B_CYAN << "b" << RESET << " -> " << sideAB << std::endl;
     std::cout << B_CYAN<< "b" << YELLOW << "c" << RESET << " -> " << sideBC << std::endl;
     std::cout << YELLOW << "c" << GREEN << "a" << RESET << " -> " << sideCA << std::endl;
-   
-    return (( sideAB > 0 && sideBC > 0 && sideCA > 0) || (sideAB <= 0 && sideBC <= 0 && sideCA <= 0));
+    
+    if ( sideAB > 0 && sideBC > 0 && sideCA > 0 )
+        return ( true );
+    return ( false );
 }
