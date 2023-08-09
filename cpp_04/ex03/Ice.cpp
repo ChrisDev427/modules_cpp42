@@ -62,7 +62,7 @@ std::string const & Ice::getType() const {
 
 AMateria* Ice::clone() const {
 
-    std::cout << ORANGE << "********** Ice CLONE FUNCTION *****************" << RESET << std::endl;
+    std::cout << ORANGE << "***** Ice CLONE FUNCTION **********************" << RESET << std::endl;
     
     return new Ice(*this);
 }

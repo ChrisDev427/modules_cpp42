@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:00:56 by chris             #+#    #+#             */
-/*   Updated: 2023/08/07 19:12:22 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/09 13:53:25 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ public:
     virtual void equip(AMateria* m) = 0;
     virtual void unequip(int idx) = 0;
     virtual void use(int idx, ICharacter& target) = 0;
+
+
+    virtual void printInventory( void ) const = 0;
+
 
 };
 

@@ -62,7 +62,7 @@ std::string const & Cure::getType() const {
 
 AMateria* Cure::clone() const {
 
-    std::cout << ORANGE << "********** Cure CLONE FUNCTION ****************" << RESET << std::endl;
+    std::cout << ORANGE << "***** Cure CLONE FUNCTION ********************" << RESET << std::endl;
 
     return new Cure(*this);
 

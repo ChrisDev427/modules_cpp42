@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:03:27 by chris             #+#    #+#             */
-/*   Updated: 2023/08/08 17:36:38 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/09 19:53:26 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,26 @@ public:
     Character & operator=( Character const & rhs );
 
 
-    std::string const & getName() const;
+    virtual std::string const & getName() const;
     virtual void equip(AMateria* m);
     virtual void unequip(int idx);
     virtual void use(int idx, ICharacter& target);
 
     virtual void printInventory( void ) const;
 
-    AMateria* inventory[4];
     
 private:
 
+   
+    
+    int _throwedNb;
+    AMateria*   _inventory[4];
+   
+    AMateria*   _throwedMaterias[20];
     std::string _name;
 
+    void _saveMatToFree( AMateria* toFree );
+    
 };
 
 
