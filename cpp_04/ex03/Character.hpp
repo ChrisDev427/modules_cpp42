@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:03:27 by chris             #+#    #+#             */
-/*   Updated: 2023/08/09 19:53:26 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/10 18:07:34 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ public:
 
     Character & operator=( Character const & rhs );
 
-
     virtual std::string const & getName() const;
     virtual void equip(AMateria* m);
     virtual void unequip(int idx);
@@ -44,13 +43,18 @@ private:
 
    
     
-    int _throwedNb;
-    AMateria*   _inventory[4];
+    int         _throwedNb;
+    int         _throwedInMemory;
+    AMateria**  _inventory;
    
-    AMateria*   _throwedMaterias[20];
+    AMateria**   _throwedMaterias;
+    AMateria**   _throwedTmp;
     std::string _name;
 
     void _saveMatToFree( AMateria* toFree );
+    void _dupThrowedTab( AMateria**  & dst, AMateria** & src );
+    bool _checkDblPtr( AMateria** tab, AMateria* src ) const;
+
     
 };
 

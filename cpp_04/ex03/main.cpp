@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:02:47 by chris             #+#    #+#             */
-/*   Updated: 2023/08/09 18:35:15 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/10 17:57:53 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,15 @@ void test2( void ) {
 
     ICharacter* me = new Character("me");
     AMateria* tmp;
+    puts("AAAAA");
+   
+
+
+
 
     tmp = src->createMateria("ice");
     me->equip(tmp);
+    me->use(0, *me);
     tmp = src->createMateria("cure");
     me->equip(tmp);
     tmp = src->createMateria("ice");
@@ -66,14 +72,14 @@ void test2( void ) {
     me->unequip( 2 );
     me->unequip( 3 );
 
-    me->printInventory();
+    // me->printInventory();
     me->equip(tmp);
     me->equip(tmp);
     me->printInventory();
 
     me->unequip( 0 );
-    me->unequip( 1 );
-    me->unequip( 2 );
+    // me->unequip( 1 );
+    // me->unequip( 2 );
     me->unequip( 3 );
     me->printInventory();
 
@@ -89,13 +95,30 @@ void test2( void ) {
     me->unequip( 1 );
     me->unequip( 2 );
     me->unequip( 3 );
+   
+    
     me->printInventory();
 
 
-    ICharacter* bob = new Character(); 
+    ICharacter* bob = new Character( "bob" ); 
+
+    // tmp = src->createMateria("ice");
+    // me->equip(tmp);
+    // tmp = src->createMateria("cure");
+    // me->equip(tmp);
+    bob->unequip( 3 );
+
+    bob->equip(tmp);
+
+
 
     me->use(1, *bob);
-    me->use(3, *bob);
+    me->use(0, *bob);
+    // me->unequip( 0 );
+
+
+    // me->printInventory();
+
 
     
 

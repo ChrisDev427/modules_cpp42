@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:11:58 by chris             #+#    #+#             */
-/*   Updated: 2023/08/09 19:53:41 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/10 18:12:53 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,47 +18,42 @@ Character::Character( void ) {
     std::cout << B_GREEN << "Character -> Default Constructor called" << RESET << std::endl;
     
     _name = "default_Name";
+    _inventory = new AMateria*[4];
+    _throwedNb = 0;
+    _throwedInMemory = 0;
+
     for ( int i = 0; i < 4; i++ ) {
 
         _inventory[i] = nullptr;
     }
     
-    
-    _throwedNb = 0;
-    
-    for ( int i = 0; i < 8; i++ ){
-        _throwedMaterias[i] = nullptr;
-    }
-   
     return;
-
 }
 
 Character::Character( std::string const & name ) : _name( name ) {
 
     std::cout << B_GREEN << "Character -> Parametric Constructor called" << RESET << std::endl;
     
+    _inventory = new AMateria*[4];
+    _throwedNb = 0;
+    _throwedInMemory = 0;
+
     for ( int i = 0; i < 4; i++ ) {
 
         _inventory[i] = nullptr;
     }
-    
-    
-    _throwedNb = 0;
-    
-    for ( int i = 0; i < 20; i++ ){
-        _throwedMaterias[i] = nullptr;
-    }
-
+ 
     return;
-
 }
 
 
 Character::Character( Character const & src ) {
 
     std::cout << B_GREEN << "Character -> Copy Constructor called" << RESET << std::endl;
-    *this = src;
+    this->_name = src._name;
+    // this->_throwedNb = src._throwedNb;
+    // _dupThrowedTab( this->_throwedMaterias, src->_throwedMaterias );
+
 
     return;
 
@@ -68,23 +63,15 @@ Character::~Character( void ) {
 
     std::cout << B_RED << "Character -> Destructor called" << RESET << std::endl;
 
-    for ( int i = 0; i < 4; i++ ) {
+  
         
-        if ( _inventory[i] ) {
+    delete[] _inventory;
+    
+    // if ( _throwedNb > 0 ) {
 
-            delete _inventory[i];
-        }
-    }
-    for ( int i = 0; i < 20; i++ ) {
+        delete[] _throwedMaterias;
+    // }
 
-        
-        if ( _throwedMaterias[i] ) {
-
-            delete _throwedMaterias[i];
-            std::cout << "i = " << i << std::endl;
-        }
-        
-    }
     
     return;
 
@@ -106,15 +93,15 @@ std::string const & Character::getName() const {
 
 void Character::equip(AMateria* m) {
 
+    
     for ( int i = 0; i < 4; i++ ) {
 
         if ( !_inventory[i] ) {
             
             std::cout << ORANGE << "***** EQUIP FUNCTION **************************" << RESET << std::endl;
             if ( m ) {
-
-                _inventory[i] = m->clone();
-                // _inventory[i] = m;
+                
+                _inventory[i] = m;
                 std::cout << B_GRAY << this->getName() << RESET << BLUE << ITAL << " _inventory[" << i << "] equiped with " << m->getType() << RESET << NORM << std::endl;
                 std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
                 return;
@@ -137,8 +124,11 @@ void Character::unequip(int idx) {
         std::cout << BLUE << ITAL << "Throwing materia " << _inventory[idx]->getType() << " from _inventory[" << idx << "]" << RESET << NORM << std::endl;
 
         this->_saveMatToFree( _inventory[idx] );
-        _inventory[idx] = nullptr;
     
+        _inventory[idx] = nullptr;
+
+        std::cout << GRAY << ITAL << "throwed Materia[" << _throwedNb << "]" << RESET << NORM << std::endl;
+        std::cout << GRAY << ITAL << "throwed in memory[" << _throwedInMemory << "]" << RESET << NORM << std::endl;
         std::cout << ORANGE << "**************************************\n" << RESET << std::endl;
     }
 }
@@ -177,16 +167,57 @@ void Character::printInventory( void ) const {
 
 void Character::_saveMatToFree( AMateria* toFree ) {
 
-    for ( int i = 0; i < 20; i++ ) {
+    if ( !_throwedMaterias ) {
+        
+        _throwedMaterias = new AMateria*[_throwedNb +1];
+        _throwedMaterias[_throwedNb ] = toFree;
+    }
+    else if ( _checkDblPtr( _throwedMaterias, toFree ) == false ) {
 
-        if ( !_throwedMaterias[i] ) {
-            puts("AAAAA");
-           _throwedMaterias[i] = toFree;
-           _throwedNb++;
-           std::cout << GRAY << ITAL << "Throwed Materia [" << _throwedNb << "]" << RESET << NORM << std::endl;
-           
-           return;
+        _dupThrowedTab( _throwedTmp, _throwedMaterias );
+        delete[] _throwedMaterias;
+      
+        _throwedMaterias = new AMateria*[_throwedNb +1];
+
+        for ( int i = 0; i < _throwedNb; i++ ) {
+
+            _throwedMaterias[i] = _throwedTmp[i];
+        }
+        _throwedMaterias[_throwedNb ] = toFree;
+
+        delete[] _throwedTmp;
+        _throwedInMemory++;
+        for ( int i = 0; _throwedMaterias[i]; i++ ) {
+            std::cout << _throwedMaterias[i] << std::endl;
         }
     }
+    _throwedNb++;
+    
 }
 
+void Character::_dupThrowedTab( AMateria** & dst, AMateria** & src ) {
+
+    int size = 0;
+    
+    while ( src[size] )
+        size++;
+    
+    dst = new AMateria*[size +1];
+
+    for ( int i = 0; i < size; i++ ) {
+
+        dst[i] = src[i];
+    }
+    dst[size +1] = nullptr;
+}
+
+bool Character::_checkDblPtr( AMateria** tab, AMateria* src ) const{
+
+    for ( int i = 0; tab[i]; i++ ) {
+
+        if ( tab[i] == src )
+            return ( true );
+    }
+    return ( false );
+
+}
