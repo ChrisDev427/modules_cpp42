@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:11:58 by chris             #+#    #+#             */
-/*   Updated: 2023/08/10 18:12:53 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/14 20:26:58 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ Character::Character( void ) {
     
     _name = "default_Name";
     _inventory = new AMateria*[4];
+    // _throwedMaterias = nullptr;
     _throwedNb = 0;
-    _throwedInMemory = 0;
+    // _throwedInMemory = 0;
+
+    _instanceNb++;
 
     for ( int i = 0; i < 4; i++ ) {
 
@@ -35,8 +38,13 @@ Character::Character( std::string const & name ) : _name( name ) {
     std::cout << B_GREEN << "Character -> Parametric Constructor called" << RESET << std::endl;
     
     _inventory = new AMateria*[4];
+    // _throwedMaterias = nullptr;    
     _throwedNb = 0;
-    _throwedInMemory = 0;
+    // _throwedInMemory = 0;
+
+
+    _instanceNb++;
+
 
     for ( int i = 0; i < 4; i++ ) {
 
@@ -64,13 +72,18 @@ Character::~Character( void ) {
     std::cout << B_RED << "Character -> Destructor called" << RESET << std::endl;
 
   
-        
+    for ( int i = 0; i < 4; i++ )
+        if ( _inventory[i] )
+            delete _inventory[i];
     delete[] _inventory;
-    
-    // if ( _throwedNb > 0 ) {
+   _instanceNb--;
 
-        delete[] _throwedMaterias;
-    // }
+    
+    if ( _throwedNb > 0 && _instanceNb == 0 ) {
+
+        for ( int i = 0; _throwedMaterias[i]; i++ )
+            delete _throwedMaterias[i];
+    }
 
     
     return;
@@ -90,6 +103,12 @@ std::string const & Character::getName() const {
     return _name;
 
 }
+
+int Character::getInstNb( void ) {
+
+    return _instanceNb;
+ }
+
 
 void Character::equip(AMateria* m) {
 
@@ -120,6 +139,7 @@ void Character::unequip(int idx) {
     if ( idx >= 0 && idx < 4 && _inventory[idx] ) {
 
         std::cout << ORANGE << "***** UNEQUIP FUNCTION ***************" << RESET << std::endl;
+        std::cout << GRAY << ITAL << "Called from '" << ORANGE << _name << GRAY << "'" << RESET << NORM << std::endl;
     
         std::cout << BLUE << ITAL << "Throwing materia " << _inventory[idx]->getType() << " from _inventory[" << idx << "]" << RESET << NORM << std::endl;
 
@@ -157,7 +177,7 @@ void Character::printInventory( void ) const {
     for ( int i = 0; i < 4; i++ ) {
 
         if ( _inventory[i] )
-            std::cout << GRAY << "_inventory [" << i << "] -> " << B_ORANGE << _inventory[i]->getType() << RESET << std::endl;
+            std::cout << GRAY << "_inventory [" << i << "] -> " << B_ORANGE << _inventory[i]->getType() << RESET << GRAY << " " << _inventory[i] << RESET << std::endl;
         else
             std::cout << GRAY << "_inventory [" << i << "] -> " << ITAL << GRAY << "empty" << RESET << std::endl;
     }
@@ -165,49 +185,47 @@ void Character::printInventory( void ) const {
 
 }
 
-void Character::_saveMatToFree( AMateria* toFree ) {
+void Character::_saveMatToFree( AMateria* toSave ) {
 
     if ( !_throwedMaterias ) {
         
-        _throwedMaterias = new AMateria*[_throwedNb +1];
-        _throwedMaterias[_throwedNb ] = toFree;
-    }
-    else if ( _checkDblPtr( _throwedMaterias, toFree ) == false ) {
-
-        _dupThrowedTab( _throwedTmp, _throwedMaterias );
-        delete[] _throwedMaterias;
-      
-        _throwedMaterias = new AMateria*[_throwedNb +1];
-
-        for ( int i = 0; i < _throwedNb; i++ ) {
-
-            _throwedMaterias[i] = _throwedTmp[i];
-        }
-        _throwedMaterias[_throwedNb ] = toFree;
-
-        delete[] _throwedTmp;
+        _throwedMaterias = new AMateria*[ 2 ];
+        _throwedMaterias[ 0 ] = toSave;
+        _throwedMaterias[ 1 ] = nullptr;
         _throwedInMemory++;
+
+    }
+    else if ( _checkDblPtr( _throwedMaterias, toSave ) == false ) {
+        
+        _dupThrowedTab( _throwedTmp, _throwedMaterias, toSave );
+
+        delete[] _throwedMaterias;
+       
+        _throwedMaterias = _throwedTmp;
+        
+        _throwedInMemory++;
+       
         for ( int i = 0; _throwedMaterias[i]; i++ ) {
-            std::cout << _throwedMaterias[i] << std::endl;
+            std::cout << i << " " << _throwedMaterias[i] << std::endl;
         }
     }
     _throwedNb++;
-    
 }
 
-void Character::_dupThrowedTab( AMateria** & dst, AMateria** & src ) {
+void Character::_dupThrowedTab( AMateria** & dst, AMateria** src, AMateria* toSave ) {
 
     int size = 0;
     
     while ( src[size] )
         size++;
     
-    dst = new AMateria*[size +1];
+    dst = new AMateria*[size +2];
 
     for ( int i = 0; i < size; i++ ) {
 
         dst[i] = src[i];
     }
+    dst[size] = toSave;
     dst[size +1] = nullptr;
 }
 
@@ -221,3 +239,22 @@ bool Character::_checkDblPtr( AMateria** tab, AMateria* src ) const{
     return ( false );
 
 }
+
+void Character::printMatToFree( void ) const{
+
+    if ( _throwedMaterias ) {
+
+        std::cout << ORANGE << "***** PRINT MATERIA'S SAVED IN MEMORY ********************" << RESET << std::endl;
+
+        for ( int i = 0; _throwedMaterias[i]; i++ ) {
+
+            std::cout << GRAY << "saved -> [" << i << "] -> " << B_ORANGE << _throwedMaterias[i]->getType() << _throwedMaterias[i] << RESET << std::endl;
+        }
+        std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
+    }
+}
+
+int             Character::_instanceNb = 0;
+int             Character::_throwedInMemory = 0;
+AMateria**      Character::_throwedMaterias = nullptr;
+AMateria**      Character::_throwedTmp = nullptr;

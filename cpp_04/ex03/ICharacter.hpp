@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:00:56 by chris             #+#    #+#             */
-/*   Updated: 2023/08/09 13:53:25 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/14 18:09:07 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,14 @@ public:
 
 
     virtual void printInventory( void ) const = 0;
+    virtual void printMatToFree( void ) const = 0;
+    // virtual int getInstNb( void ) = 0;
+
 
 
 };
+
+// static int instanceNb = 0;
+
 
 #endif /*************************** ICHARACTER_HPP */

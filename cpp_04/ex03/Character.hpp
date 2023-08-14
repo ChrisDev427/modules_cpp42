@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:03:27 by chris             #+#    #+#             */
-/*   Updated: 2023/08/10 18:07:34 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/14 19:31:45 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,27 @@ public:
     virtual void use(int idx, ICharacter& target);
 
     virtual void printInventory( void ) const;
+    virtual void printMatToFree( void ) const;
+    static int   getInstNb( void );
 
     
 private:
 
+    int             _throwedNb;
+    AMateria**      _inventory;
    
-    
-    int         _throwedNb;
-    int         _throwedInMemory;
-    AMateria**  _inventory;
    
-    AMateria**   _throwedMaterias;
-    AMateria**   _throwedTmp;
-    std::string _name;
+    std::string     _name;
 
-    void _saveMatToFree( AMateria* toFree );
-    void _dupThrowedTab( AMateria**  & dst, AMateria** & src );
+    void _saveMatToFree( AMateria* toSave );
+    void _dupThrowedTab( AMateria**  & dst, AMateria** src, AMateria* toSave );
     bool _checkDblPtr( AMateria** tab, AMateria* src ) const;
+    static int _instanceNb;
 
+ 
+    static int             _throwedInMemory;
+    static AMateria**      _throwedMaterias;
+    static AMateria**      _throwedTmp;
     
 };
 

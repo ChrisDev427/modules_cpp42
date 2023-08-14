@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:01:56 by chris             #+#    #+#             */
-/*   Updated: 2023/08/10 16:39:53 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/14 19:26:51 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ MateriaSource::~MateriaSource( void ) {
         if ( _materiaLearned[i] )
             delete _materiaLearned[i];
         
-        if ( _materia[i] )
-            delete _materia[i];
+        // if ( _materia[i] )
+        //     delete _materia[i];
     }
     return;
 
@@ -115,6 +115,7 @@ AMateria*   MateriaSource::createMateria(std::string const & type) {
                     std::cout << GREEN << "materia " << type << " created" << RESET << std::endl;
                     std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
 
+                    
                     return _materia[i] = _materiaLearned[j]->clone();
                 }
                 if ( j == 3 ) {
@@ -156,7 +157,7 @@ void    MateriaSource::printCreatedMateria( void ) const {
     for ( int i = 0; i < 4; i++ ) {
         
         if ( _materia[i] )
-            std::cout << GREEN << "Created [" << i << "] -> " << _materia[i]->getType() << RESET << std::endl;
+            std::cout << GREEN << "Created [" << i << "] -> " << _materia[i]->getType() << RESET << GRAY << " " << _materia[i] << RESET << std::endl;
         else
             std::cout << GRAY << "_______ [" << i << "] -> " << ITAL << "empty" << RESET << NORM << std::endl;
     }

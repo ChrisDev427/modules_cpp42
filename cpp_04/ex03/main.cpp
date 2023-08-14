@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:02:47 by chris             #+#    #+#             */
-/*   Updated: 2023/08/10 17:57:53 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/14 19:30:02 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,80 +44,79 @@ void test2( void ) {
     IMateriaSource* src = new MateriaSource(); 
     src->learnMateria(new Ice()); 
     src->learnMateria(new Cure());
-
+    src->learnMateria(new Ice()); 
+    src->learnMateria(new Cure());
+    
     src->printLearnedMateria();
 
+    IMateriaSource* src2 = new MateriaSource(); 
+    src2->learnMateria(new Ice()); 
+    src2->learnMateria(new Cure());
+    src2->learnMateria(new Ice()); 
+    src2->learnMateria(new Cure());
+
+    src2->printLearnedMateria();
+
     ICharacter* me = new Character("me");
+    std::cout << "instances = " << Character::getInstNb() << std::endl;
+    ICharacter* bob = new Character( "bob" ); 
+    std::cout << "instances = " << Character::getInstNb() << std::endl;
     AMateria* tmp;
-    puts("AAAAA");
+    AMateria* tmp2;
+
    
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+    tmp2 = src2->createMateria("ice");
+    bob->equip(tmp2);
 
-
-
+    
+    tmp = src->createMateria("cure");
+    me->equip(tmp);
+    tmp2 = src2->createMateria("ice");
+    bob->equip(tmp2);
 
     tmp = src->createMateria("ice");
     me->equip(tmp);
-    me->use(0, *me);
+    tmp2 = src2->createMateria("cure");
+    bob->equip(tmp2);
+
     tmp = src->createMateria("cure");
     me->equip(tmp);
-    tmp = src->createMateria("ice");
-    me->equip(tmp);
-    tmp = src->createMateria("cure");
-    me->equip(tmp);
+    tmp2 = src2->createMateria("cure");
+    bob->equip(tmp2);
+
 
 
     src->printCreatedMateria();
     me->printInventory();
+    bob->printInventory();
 
-    me->unequip( 2 );
-    me->unequip( 3 );
+    bob->use(0, *me);
+    me->use(0, *bob);
+    bob->use(1, *me);
+    me->use(1, *bob);
+    bob->use(2, *me);
+    me->use(2, *bob);
+    bob->use(3, *me);
+    me->use(3, *bob);
 
-    // me->printInventory();
-    me->equip(tmp);
-    me->equip(tmp);
-    me->printInventory();
-
-    me->unequip( 0 );
-    // me->unequip( 1 );
-    // me->unequip( 2 );
-    me->unequip( 3 );
-    me->printInventory();
-
-    me->equip(tmp);
-    me->unequip( 0 );
-    me->printInventory();
-    me->equip(tmp);
-    me->equip(tmp);
-    me->equip(tmp);
-    me->equip(tmp);
-    me->printInventory();
     me->unequip( 0 );
     me->unequip( 1 );
     me->unequip( 2 );
     me->unequip( 3 );
-   
-    
-    me->printInventory();
 
-
-    ICharacter* bob = new Character( "bob" ); 
-
-    // tmp = src->createMateria("ice");
-    // me->equip(tmp);
-    // tmp = src->createMateria("cure");
-    // me->equip(tmp);
+    bob->unequip( 0 );
+    bob->unequip( 1 );
+    bob->unequip( 2 );
     bob->unequip( 3 );
 
-    bob->equip(tmp);
+   
+    me->printInventory();
+    bob->printInventory();
 
+   
 
-
-    me->use(1, *bob);
-    me->use(0, *bob);
-    // me->unequip( 0 );
-
-
-    // me->printInventory();
 
 
     
@@ -125,6 +124,7 @@ void test2( void ) {
     delete bob; 
     delete me; 
     delete src;
+    delete src2;
     
 
 
