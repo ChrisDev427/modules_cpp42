@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 14:36:11 by chris             #+#    #+#             */
-/*   Updated: 2023/08/02 11:03:29 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/16 10:13:26 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <string>
 # include <iostream>
 # include <fstream>
+
 class FileCopy {
 
 public:
@@ -36,7 +37,6 @@ private:
     std::ifstream   OpenRead( const char *file );
     std::ofstream   OpenWrite( std::string fileName );
 
-    
 };
 
 

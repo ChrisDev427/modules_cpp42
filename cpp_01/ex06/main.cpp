@@ -6,11 +6,11 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 08:58:57 by chris             #+#    #+#             */
-/*   Updated: 2023/07/31 11:28:44 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/16 10:09:51 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.hpp"
+#include "color.hpp"
 #include "Harl.hpp"
 
 int main( int ac, char **av ) {
@@ -23,7 +23,7 @@ int main( int ac, char **av ) {
     }
 
     else
-        error( "This program need one argument", NULL );
+        std::cout << RED << "This program need one argument" << RESET << std::endl;
     
     return 0; 
 }

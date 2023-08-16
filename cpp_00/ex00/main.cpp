@@ -6,33 +6,28 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:08:11 by chris             #+#    #+#             */
-/*   Updated: 2023/07/19 12:24:12 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/15 17:42:49 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "megaphone.hpp"
 
-static int strExist(char **tab)
+int main(int ac, char **av)
 {
-    int strExist = 0;
-    
-    for (int i = 1; tab[i]; i++)
-        if (strlen(tab[i]) > 0)
-            strExist++;
-    if (strExist == 0) {
-        return 0;
-    }
-    return 1;
-}
-
-int main(int argc, char **av)
-{
-    if (argc == 1 || strExist(av) == 0)
+    if ( ac == 1 )
         std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
     else
-    {
-        Mega    instance(argc, av);
-        std::cout << instance.str << std::endl;
+    {   
+        av = &av[1];
+        ac -= 1;
+        
+        std::string args[ac];
+        for ( int i = 0; av[i]; i++ )
+            args[i] = av[i];
+        
+        Mega    instance;
+
+        instance.megaphone( ac, args );
     }
     return 0;
 }

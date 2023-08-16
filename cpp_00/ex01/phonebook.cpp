@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 13:28:09 by chris             #+#    #+#             */
-/*   Updated: 2023/07/31 11:14:53 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/16 07:46:46 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,16 +112,35 @@ void    PhoneBook::searchContact( void ) {
 void    PhoneBook::printContact( void ) {
 
     int choice;
+    std::string input;
 
-    while ( 1 ) {
+    while ( true ) {
 
-        std::cout << GREEN << "Enter the contact number you want to see or 0 to go back " << B_CYAN;
-        std::cin >> choice;
-		std::cin.ignore();
+        while ( true ) {
+            
+            std::cout << GREEN << "Enter the contact number you want to see or 0 to go back " << RESET;
+            std::getline(std::cin, input);
+
+            if (input.empty()) {
+
+                std::cout << RED << "No input provided." << RESET << std::endl;
+                continue;
+            }
+
+            std::istringstream iss(input);
+            if (iss >> choice) {
+                if (choice >= 0 )
+                    break;
+                else
+                    std::cout << RED << "Invalid input." << RESET << std::endl;
+            } 
+            else
+                std::cout << RED << "Invalid input. Numeric value is needed" << RESET << std::endl;
+        }
 		if ( choice == 0 )
 			return;
         choice -= 1;
-        if ( choice < this->contactNb ) {
+        if ( choice >= 0 && choice < this->contactNb ) {
             std::cout << B_GRAY << "  First Name:    " << YELLOW << PhoneBook::contactsTab[choice].firstName << std::endl;
             std::cout << B_GRAY << "   Last Name:    " << YELLOW << PhoneBook::contactsTab[choice].lastName << std::endl;
             std::cout << B_GRAY << "   Nick Name:    " << YELLOW << PhoneBook::contactsTab[choice].nickName << std::endl;
@@ -129,6 +148,7 @@ void    PhoneBook::printContact( void ) {
             std::cout << B_GRAY << " Dark Secret:    " << YELLOW << PhoneBook::contactsTab[choice].darkSecret << RESET << std::endl;
         }
         else
-            std::cout << RED << "Error: wrong number " << RESET << std::endl;
+            std::cout << RED << "Invalid input." << RESET << std::endl;
+
     }
 }

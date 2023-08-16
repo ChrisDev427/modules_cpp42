@@ -6,12 +6,14 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 08:58:57 by chris             #+#    #+#             */
-/*   Updated: 2023/07/31 18:19:48 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/16 09:43:52 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.hpp"
+#include "color.hpp"
 #include "Harl.hpp"
+#include <ctime>
+#include <thread>
 
 
 int main( int ac, char **av ) {
@@ -28,13 +30,10 @@ int main( int ac, char **av ) {
             int randomIndex = std::rand() % 4;
             inst.complain( inst.levels[randomIndex] );
             std::cout << std::endl;
-            std::this_thread::sleep_for(std::chrono::microseconds(800000));
-
+            std::this_thread::sleep_for(std::chrono::microseconds(500000));
         }
-
     }
     else
-        error( "This program need one argument\nHow many times do you want Harl to complain ?", NULL );
-    
+        std::cout << RED << "This program need one argument\nHow many times do you want Harl to complain ?" << RESET << std::endl;
     return 0; 
 }

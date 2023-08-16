@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.hpp                                          :+:      :+:    :+:   */
+/*   color.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 14:32:19 by chris             #+#    #+#             */
-/*   Updated: 2023/07/31 11:28:25 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/16 09:43:22 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_HPP
-# define UTILS_HPP
+#ifndef COLOR_HPP
+# define COLOR_HPP
+
 # include <string>
 # include <iostream>
-# include <fstream>
 
 # define RESET   "\033[0m"
 # define RED     "\033[1;31m"
@@ -27,6 +27,4 @@
 # define B_CYAN    "\033[1;36m"
 # define MAGENTA "\033[35m"
 
-void    error(std::string  const s1, const char *s2);
-
-#endif /* UTILS_HPP */
+#endif /*********************************************************** COLOR_HPP */

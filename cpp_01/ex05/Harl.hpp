@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 14:36:11 by chris             #+#    #+#             */
-/*   Updated: 2023/07/26 08:46:33 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/16 09:37:58 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <string>
 # include <iostream>
 # include <fstream>
+# include "color.hpp"
+
 
 class Harl {
 

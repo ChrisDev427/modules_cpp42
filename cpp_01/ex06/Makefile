@@ -7,7 +7,8 @@ NAME = HarlFilter
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -I #-fsanitize=address
 
-SRCS =  *.cpp
+SRCS =  main.cpp \
+		Harl.cpp
 		
 
 OBJECT_FILES = $(SRCS:.cpp=.o)

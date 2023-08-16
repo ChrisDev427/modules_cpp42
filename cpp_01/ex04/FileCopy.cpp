@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 14:36:15 by chris             #+#    #+#             */
-/*   Updated: 2023/08/02 11:33:07 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/16 09:57:16 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ std::ifstream    FileCopy::OpenRead( const char *file ) {
 
     }
     return ifs;
-
 }
 
 std::ofstream    FileCopy::OpenWrite( std::string fileName ) {
@@ -53,8 +52,6 @@ std::ofstream    FileCopy::OpenWrite( std::string fileName ) {
 
     }
     return ofs;
-
-
 }
 
 void    FileCopy::fileCopy( std::ifstream&   inFile, std::ofstream&   outFile ) {

@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.cpp                                          :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 14:31:27 by chris             #+#    #+#             */
-/*   Updated: 2023/07/25 17:20:32 by chris            ###   ########.fr       */
+/*   Created: 2023/08/15 17:53:14 by chris             #+#    #+#             */
+/*   Updated: 2023/08/15 17:56:03 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.hpp"
-#include "Harl.hpp"
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
+# include <string>
 
-void    error(std::string  const s1, const char *s2) {
 
-    std::cout << "Error: ";
-    std::cout << s1 << " ";
-    if ( s2 )
-        std::cout << s2;
-    std::cout << std::endl;
-    exit (EXIT_FAILURE); 
-}
+class Contact {
+
+public:
+
+    std::string firstName;
+    std::string lastName;
+    std::string nickName;
+    std::string phoneNumber;
+    std::string darkSecret;
+
+};
+
+#endif /******************************************************* CONTACT_HPP */

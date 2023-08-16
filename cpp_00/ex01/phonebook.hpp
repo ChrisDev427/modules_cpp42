@@ -6,14 +6,14 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:08:17 by chris             #+#    #+#             */
-/*   Updated: 2023/07/31 11:14:42 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/15 17:56:52 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
+# include "Contact.hpp"
 # include <iostream>
-# include <vector>
 # include <sstream>
 # include <cstring>
 # include <string>
@@ -32,17 +32,17 @@
 #define BOLDWHITE "\033[1;37m"
 #define B_GRAY "\033[1;30m"
 
-class Contact {
+// class Contact {
 
-public:
+// public:
 
-    std::string firstName;
-    std::string lastName;
-    std::string nickName;
-    std::string phoneNumber;
-    std::string darkSecret;
+//     std::string firstName;
+//     std::string lastName;
+//     std::string nickName;
+//     std::string phoneNumber;
+//     std::string darkSecret;
 
-};
+// };
 
 class PhoneBook {
 
@@ -72,4 +72,4 @@ private:
     std::string _buffToPrint[3];
 
 };
-#endif /* PHONEBOOK_HPP */
+#endif /******************************************************* PHONEBOOK_HPP */

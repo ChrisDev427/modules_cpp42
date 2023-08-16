@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:08:11 by chris             #+#    #+#             */
-/*   Updated: 2023/07/25 11:51:51 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/16 07:59:15 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,23 @@ int main( int ac, char **av ) {
 
         while ( 1 ) {
 
-		if (std::cin.eof())
-			exit (1);
-            
-            std::cout << B_CYAN << "Enter 'ADD', 'SEARCH' or 'EXIT' : " << GREEN;
-            std::getline( std::cin, book.cIn );
+            while ( true ) {
 
+                std::cout << B_CYAN << "\nEnter 'ADD', 'SEARCH' or 'EXIT' : " << RESET;
+                std::getline( std::cin, book.cIn );
+                if ( book.cIn != "ADD" && book.cIn != "SEARCH" && book.cIn != "EXIT" )
+                    std::cout << RED << "Invalid choice !" << RESET << std::endl;
+                else
+                    break;
+            }
+            
             book.initChoice();
            
             switch ( book.choice )
             {
+                
             case 1:
                 book.initContact();
-                
                 break;
             case 2:
                 book.searchContact ();
@@ -53,11 +57,7 @@ int main( int ac, char **av ) {
                 std::cout << GREEN << "\n       *** Goodbye Bro ***\n" << RESET <<std::endl;
                 sleep( 2 );
                 system( "clear" );
-                exit ( 0 );
-                break;
-            default:
-                std::cout << RED << "Invalid choice !" << RESET << std::endl;
-                break;
+                return 0;
             }
         }
     }
