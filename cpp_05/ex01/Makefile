@@ -1,13 +1,13 @@
 # Makefile
 
 
-NAME = megaphone
+NAME = Bureaucrat
 
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -I #-fsanitize=address
 
-SRCS =  megaphone.cpp
+SRCS = *.cpp
 
 OBJECT_FILES = $(SRCS:.cpp=.o)
 HEADER = -I
@@ -21,12 +21,12 @@ $(NAME): $(OBJECT_FILES)
 
 #------------------------------------------------------------------------------
 clean: 
-	@rm -rf $(OBJECT_FILES)
+	@rm -rf *.o 
 	@echo "$(GREEN)<<<<< clean from $(NAME) done ! >>>>>\n$(DEFAULT)"
 
 #------------------------------------------------------------------------------
 fclean: clean
-	@rm -rf $(NAME)
+	@rm -rf *.o
 	@echo "$(GREEN)<<<<< fclean done ! >>>>>\n$(DEFAULT)"
 #------------------------------------------------------------------------------
 re: fclean all

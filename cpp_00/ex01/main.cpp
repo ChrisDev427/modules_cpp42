@@ -6,11 +6,12 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:08:11 by chris             #+#    #+#             */
-/*   Updated: 2023/08/16 07:59:15 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/17 19:04:07 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "Phonebook.hpp"
+#include <cstdlib>
 
 static void printTitle(void) {
     
@@ -29,12 +30,18 @@ int main( int ac, char **av ) {
     
     if ( ac == 1 ){
 
-        while ( 1 ) {
+
+        while ( true ) {
 
             while ( true ) {
 
-                std::cout << B_CYAN << "\nEnter 'ADD', 'SEARCH' or 'EXIT' : " << RESET;
+                std::cout << B_CYAN << "\nEnter 'ADD', 'SEARCH' or 'EXIT' : " << RESET << GREEN;
+                
                 std::getline( std::cin, book.cIn );
+                if ( book.errorEof( book.cIn ) == true ) {
+                
+                    continue;
+                }
                 if ( book.cIn != "ADD" && book.cIn != "SEARCH" && book.cIn != "EXIT" )
                     std::cout << RED << "Invalid choice !" << RESET << std::endl;
                 else
@@ -54,8 +61,10 @@ int main( int ac, char **av ) {
                 break;
             case 3:
                 system( "clear" );
-                std::cout << GREEN << "\n       *** Goodbye Bro ***\n" << RESET <<std::endl;
-                sleep( 2 );
+                std::cout << B_BLUE << "\n  *** PhoneBook is turning off ! ***\n" << RESET <<std::endl;
+                sleep( 1 );
+                std::cout << B_BLUE << "        *** Goodbye Bro ***\n" << RESET <<std::endl;
+                sleep( 3 );
                 system( "clear" );
                 return 0;
             }

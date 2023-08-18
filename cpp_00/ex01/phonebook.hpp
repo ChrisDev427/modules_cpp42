@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:08:17 by chris             #+#    #+#             */
-/*   Updated: 2023/08/15 17:56:52 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/18 07:18:50 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PHONEBOOK_HPP
 # include "Contact.hpp"
 # include <iostream>
+# include <iomanip>
 # include <sstream>
-# include <cstring>
 # include <string>
 # include <unistd.h>
 
@@ -32,44 +32,34 @@
 #define BOLDWHITE "\033[1;37m"
 #define B_GRAY "\033[1;30m"
 
-// class Contact {
-
-// public:
-
-//     std::string firstName;
-//     std::string lastName;
-//     std::string nickName;
-//     std::string phoneNumber;
-//     std::string darkSecret;
-
-// };
-
 class PhoneBook {
 
 public:
 
     PhoneBook(void);
-    ~PhoneBook(void);
 
-    
     std::string cIn;
     int         choice;
-    Contact     contactsTab[8];
-    int         contactNb;
-    int         contactId;
-
 
     void    initChoice(void);
     void    initContact(void);
     void    searchContact(void);
+    bool    errorEof( std::string& str );
 
 private:
 
-    void    fillForm(Contact *ptr);
+    void        ( Contact::*_ptrSetFunc[5] )( std::string str );
+    std::string ( Contact::*_ptrGetFunc[5] )( void );
+    int         _contactNb;
+    int         _contactId;
+
+    bool    fillForm(Contact *ptr);
     void    setContactToPrint(Contact *ptr);
     void    printContact(void);
 
     std::string _buffToPrint[3];
+    Contact     _contactsTab[8];
+    std::string _attributsTab[5];
 
 };
 #endif /******************************************************* PHONEBOOK_HPP */

@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:38:27 by chris             #+#    #+#             */
-/*   Updated: 2023/08/01 15:20:06 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/18 16:14:29 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ public:
 
     FragTrap & operator=( FragTrap const & rhs );
 
-    void attack(const std::string& target);
+    void attack(const std::string& target); // Verifier si besoin de cette fonction !!!
     void highFivesGuys( void );
 
     int getValue( std::string value ) const;

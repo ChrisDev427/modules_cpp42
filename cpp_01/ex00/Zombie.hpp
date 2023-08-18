@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 08:59:18 by chris             #+#    #+#             */
-/*   Updated: 2023/07/31 11:20:46 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/16 15:21:15 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,4 @@ private:
 void    randomChump( std::string name );
 Zombie* newZombie( std::string name );
 
-#endif /*ZOMBIE_HPP*/
+#endif /*********************************************************** ZOMBIE_HPP*/

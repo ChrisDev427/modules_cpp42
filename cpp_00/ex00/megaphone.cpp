@@ -6,24 +6,25 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:08:15 by chris             #+#    #+#             */
-/*   Updated: 2023/08/15 17:39:56 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/17 20:29:05 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "megaphone.hpp"
+#include <iostream>
+#include <string>
 
-Mega::Mega( void ) {
-
-   
-    return;
-}
-
-Mega::~Mega(void) {
+void    toUpper(std::string & str) {
     
-    return;
+    for ( std::string::iterator it = str.begin(); it != str.end(); ++it ) {
+
+        for ( std::size_t i = 0; i < str.length(); ++i ) {
+
+            str[i] = std::toupper(str[i]);
+        }
+    }
 }
 
-void    Mega::megaphone( int ac, std::string args[] ) {
+void    megaphone( int ac, std::string args[] ) {
 
     for ( int i = 0; i < ac; i++ ) {
         
@@ -34,13 +35,23 @@ void    Mega::megaphone( int ac, std::string args[] ) {
 }
 
 
-void    Mega::toUpper(std::string & str) {
-    
-    for ( std::string::iterator it = str.begin(); it != str.end(); ++it ) {
 
-        for ( std::size_t i = 0; i < str.length(); ++i ) {
+int main(int ac, char **av)
+{
+    if ( ac == 1 )
+        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+    else
+    {   
+        av = &av[1];
+        ac -= 1;
+        
+        std::string args[ac];
+        for ( int i = 0; av[i]; i++ ) {
 
-            str[i] = std::toupper(str[i]);
+            args[i] = av[i];
         }
+        
+        megaphone( ac, args );
     }
+    return 0;
 }
