@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:41:11 by chris             #+#    #+#             */
-/*   Updated: 2023/08/19 18:37:47 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/21 15:31:31 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
-# include "Form.hpp"
+# include "AForm.hpp"
 # include <iostream>
 # include <stdexcept>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 
@@ -52,7 +52,7 @@ class Bureaucrat {
 
         void        incremGrade( void );
         void        decremGrade( void );
-        void        signForm( Form & ref );
+        void        signForm( AForm & ref );
     private:
 
         int                 _grade;

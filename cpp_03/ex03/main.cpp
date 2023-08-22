@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 17:22:05 by chris             #+#    #+#             */
-/*   Updated: 2023/08/03 17:22:31 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/21 09:40:22 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,37 +20,37 @@
 
 int main( void ) {
 
-    // ClapTrap chris( "Chris" );
-    // ScavTrap carol( "Carol" );
-    // FragTrap alain( "Alain" );
-    // DiamondTrap john( "John" );
+    ClapTrap chris( "Chris" );
+    ScavTrap carol( "Carol" );
+    FragTrap alain( "Alain" );
+    DiamondTrap john( "John" );
 
-    ClapTrap a;
-    ScavTrap b;
-    FragTrap c;
-    DiamondTrap d;
+    // ClapTrap a;
+    // ScavTrap b;
+    // FragTrap c;
+    // DiamondTrap d;
 
-    a.printValues();
-    b.printValues();
-    c.printValues();
-    d.printValues();
+    // a.printValues();
+    // b.printValues();
+    // c.printValues();
+    // d.printValues();
 
-    a.attack("tom");
-    b.attack("tom");
-    c.attack("tom");
-    d.attack("tom");
+    // a.attack("tom");
+    // b.attack("tom");
+    // c.attack("tom");
+    // d.attack("tom");
 
-    a.takeDamage(50);
+    // a.takeDamage(50);
 
-    c.beRepaired(20);
+    // c.beRepaired(20);
 
-    c.highFivesGuys();
+    // c.highFivesGuys();
 
-    b.guardGate();
-    a.printValues();
-    b.printValues();
-    c.printValues();
-    d.printValues();
+    // b.guardGate();
+    // a.printValues();
+    // b.printValues();
+    // c.printValues();
+    // d.printValues();
 
 
     // chris.printValues();
@@ -59,28 +59,28 @@ int main( void ) {
     // john.printValues();
     
     
-    // chris.attack( "tom" );
-    // carol.attack( "tom" );
-    // alain.attack( "tom" );
-    // alain.takeDamage(carol.getValue("attackDamage"));
-    // alain.takeDamage(carol.getValue("attackDamage"));
-    // alain.beRepaired( 25 );
-    // alain.takeDamage(carol.getValue("attackDamage"));
-    // alain.takeDamage(carol.getValue("attackDamage"));
-    // alain.takeDamage(carol.getValue("attackDamage"));
-    // alain.attack( "tom" );
+    chris.attack( "tom" );
+    carol.attack( "tom" );
+    alain.attack( "tom" );
+    alain.takeDamage(carol.getValue("attackDamage"));
+    alain.takeDamage(carol.getValue("attackDamage"));
+    alain.beRepaired( 25 );
+    alain.takeDamage(carol.getValue("attackDamage"));
+    alain.takeDamage(carol.getValue("attackDamage"));
+    alain.takeDamage(carol.getValue("attackDamage"));
+    alain.attack( "tom" );
 
    
-    // john.attack( "tom" );
-    // john.attack( "tom" );
-    // john.attack( "tom" );
-    // john.attack( "tom" );
-    // john.attack( "tom" );
-    // john.attack( "tom" );
-    // john.takeDamage(carol.getValue("attackDamage"));
-    // carol.beRepaired( 25 );
-    // chris.beRepaired( 25 );
-    // john.beRepaired( 25 );
+    john.attack( "tom" );
+    john.attack( "tom" );
+    john.attack( "tom" );
+    john.attack( "tom" );
+    john.attack( "tom" );
+    john.attack( "tom" );
+    john.takeDamage(carol.getValue("attackDamage"));
+    carol.beRepaired( 25 );
+    chris.beRepaired( 25 );
+    john.beRepaired( 25 );
 
     
 

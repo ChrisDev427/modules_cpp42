@@ -6,11 +6,12 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:51:07 by chris             #+#    #+#             */
-/*   Updated: 2023/08/20 18:16:20 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/21 16:33:47 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
 
 Bureaucrat::gradeExcept::gradeExcept( const char* type ) throw() : _errorType( type ) {}
 Bureaucrat::gradeExcept::~gradeExcept() throw() {}
@@ -24,7 +25,7 @@ Bureaucrat::Bureaucrat( void ) : _grade(0), _name( "default_Name" ) {
 
 Bureaucrat::Bureaucrat( std::string const name, int grade ) : _name( name ) {
 
-    std::cout << "Parametric Constructor called" << std::endl;
+    // std::cout << "Parametric Constructor called" << std::endl;
 
     if ( grade < 1 )
         throw gradeExcept( "Bureaucrat::GradeTooHighException" );
@@ -48,6 +49,7 @@ Bureaucrat::~Bureaucrat( void ) {
     // std::cout << "Destructor called" << std::endl;
 
     return;
+
 }
 
 Bureaucrat & Bureaucrat::operator=( Bureaucrat const & rhs ) {
@@ -55,8 +57,8 @@ Bureaucrat & Bureaucrat::operator=( Bureaucrat const & rhs ) {
     std::cout << "Assignment operator called" << std::endl;
     const_cast<std::string&>(_name) = rhs._name;
     _grade = rhs._grade;
-    
     return *this;
+
 }
 
 std::string Bureaucrat::getName( void ) const {
@@ -93,10 +95,21 @@ void Bureaucrat::decremGrade( void ) {
     }
 }
 
-const char* Bureaucrat::gradeExcept::what() const throw() {
+const char* Bureaucrat::gradeExcept::what() const throw() { return _errorType; }
 
-    return _errorType;
-    
+void        Bureaucrat::signForm( AForm & ref ) {
+
+    try {
+        ref.beSigned( *this );
+        std::cout << GREEN << _name << " signed " << ref.getName() << RESET << std::endl;
+    }
+    catch ( const AForm::gradeExcept& e) {
+
+        std::cout << _name << RED << " couldn’t sign " << ref.getName() << " because " << e.what() << RESET << std::endl;
+
+    }
+
+    return;
 
 }
 

@@ -6,19 +6,19 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:51:07 by chris             #+#    #+#             */
-/*   Updated: 2023/08/18 19:02:52 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/20 18:17:20 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+
 
 Bureaucrat::gradeExcept::gradeExcept( const char* type ) throw() : _errorType( type ) {}
 Bureaucrat::gradeExcept::~gradeExcept() throw() {}
 
 Bureaucrat::Bureaucrat( void ) : _grade(0), _name( "default_Name" ) {
 
-    // std::cout << "Default Constructor called" << std::endl;
+    std::cout << "Default Constructor called" << std::endl;
     
     return;
 }
@@ -37,10 +37,9 @@ Bureaucrat::Bureaucrat( std::string const name, int grade ) : _name( name ) {
 }
 
 
-Bureaucrat::Bureaucrat( Bureaucrat const & src ) {
+Bureaucrat::Bureaucrat( Bureaucrat const & src ) : _grade( src._grade ), _name( src._name ) {
 
     std::cout << "Copy Constructor called" << std::endl;
-    *this = src;
 
     return;
 }
@@ -56,7 +55,7 @@ Bureaucrat::~Bureaucrat( void ) {
 Bureaucrat & Bureaucrat::operator=( Bureaucrat const & rhs ) {
 
     std::cout << "Assignment operator called" << std::endl;
-    static_cast<std::string>(_name) = rhs._name;
+    const_cast<std::string&>(_name) = rhs._name;
     _grade = rhs._grade;
     return *this;
 
@@ -100,13 +99,16 @@ const char* Bureaucrat::gradeExcept::what() const throw() { return _errorType; }
 
 void        Bureaucrat::signForm( Form & ref ) {
 
-    if ( ref.getSigned() == true ) {
+    try {
+        ref.beSigned( *this );
         std::cout << _name << " signed " << ref.getName() << std::endl;
     }
-    else {
-        std::cout << _name << " couldn’t sign " << ref.getName() << " because * a definir * " << std::endl;
+    catch ( const Form::gradeExcept& e) {
+
+        std::cout << _name << " couldn’t sign " << ref.getName() << " because " << e.what() << std::endl;
 
     }
+
     return;
 
 }

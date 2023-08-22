@@ -6,121 +6,40 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:31:44 by chris             #+#    #+#             */
-/*   Updated: 2023/08/18 08:42:46 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/19 18:55:52 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
+
+
+
 
 void test1( void ) {
 
-    try {
-
-        Bureaucrat chris( "Chris", 170 );
-    }
-    catch ( const Bureaucrat::gradeExcept& e) {
-
-        std::cerr << e.what() << std::endl;
-    }
-
-    try {
-
-        Bureaucrat tom( "Tom", -170 );
-    }
-    catch ( const Bureaucrat::gradeExcept& e) {
-
-        std::cerr << e.what() << std::endl;
-    }
-
-}
-
-void test2( void ) {
-
-    try {
-
-        Bureaucrat chris( "Chris", 130 );
-        std::cout << chris << std::endl;
-    }
-    catch ( const Bureaucrat::gradeExcept& e) {
-
-        std::cerr << e.what() << std::endl;
-    }
-
-    try {
-
-        Bureaucrat jean( "Jean", 5 );
-        std::cout << jean << std::endl;
-    }
-    catch ( const Bureaucrat::gradeExcept& e) {
-
-        std::cerr << e.what() << std::endl;
-    }
-
-}
-
-void test3( void ) {
-
-    try {
-
-        Bureaucrat chris( "Chris", 130 );
-        std::cout << chris << std::endl;
-
-        chris.decremGrade();
-        std::cout << chris << std::endl;
-
-        chris.incremGrade();
-        std::cout << chris << std::endl;
-
-    }
-    catch ( const Bureaucrat::gradeExcept& e) {
-
-        std::cerr << e.what() << std::endl;
-    }
-
-}
-
-void test4( void ) {
-
-    Bureaucrat tom( "Tom", 1 );
+    Bureaucrat franck( "Franck", 26 );
     
-    std::cout << tom << std::endl;
+    Form form1( "Form1", 25, 58 );
 
-    try {
+    std::cout << form1 << std::endl;
 
-        tom.incremGrade();
-        std::cout << tom << std::endl;
-    }
-    catch ( const Bureaucrat::gradeExcept& e) {
+    franck.signForm( form1 );
 
-        std::cerr << e.what() << std::endl;
-    }
-}
+    Form form2 = form1;
 
-void test5( void ) {
+    std::cout << form2 << std::endl;
 
-    Bureaucrat marc( "Marc", 150 );
-    
-    std::cout << marc << std::endl;
 
-    try {
-
-        marc.decremGrade();
-        std::cout << marc << std::endl;
-    }
-    catch ( const Bureaucrat::gradeExcept& e) {
-
-        std::cerr << e.what() << std::endl;
-    }
+        
 }
 
 int main() {
 
     
-    // test1();
+    test1();
     // test2();
-    // test3();
-    // test4();
-    test5();
+    
 
     
 

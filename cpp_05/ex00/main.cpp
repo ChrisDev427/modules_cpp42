@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:31:44 by chris             #+#    #+#             */
-/*   Updated: 2023/08/18 08:42:46 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/20 18:15:08 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,26 @@ void test5( void ) {
     }
 }
 
+
+void test6( void ) {
+
+    Bureaucrat marc( "Marc", 150 );
+    std::cout << marc << std::endl;
+
+    Bureaucrat chris( marc );
+    std::cout << chris << std::endl;
+
+    Bureaucrat tom;
+
+    tom = chris;
+    std::cout << tom << std::endl;
+
+    
+    
+
+   
+}
+
 int main() {
 
     
@@ -120,7 +140,8 @@ int main() {
     // test2();
     // test3();
     // test4();
-    test5();
+    // test5();
+    test6();
 
     
 

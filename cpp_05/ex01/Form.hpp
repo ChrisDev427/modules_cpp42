@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:41:11 by chris             #+#    #+#             */
-/*   Updated: 2023/08/18 19:04:26 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/19 17:41:14 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
+# include "Bureaucrat.hpp"
 # include <iostream>
 # include <stdexcept>
+
+class Bureaucrat;
 
 class Form {
 
@@ -61,7 +64,6 @@ class Form {
         int const           _gradeExec;
         bool                _signed;
         std::string const   _name;
-        std::string         _reason;
 
 };
 
