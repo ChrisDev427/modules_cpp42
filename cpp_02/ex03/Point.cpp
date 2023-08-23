@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 07:35:21 by chris             #+#    #+#             */
-/*   Updated: 2023/08/23 11:02:10 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/23 16:11:54 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@
 
 Point::Point( void ) : _x( 0 ), _y( 0 ) {
 
-    // std::cout << "Default Constructor called" << std::endl;
+    std::cout << "Point: Default Constructor called" << std::endl;
 
     return;
 }
 
 Point::Point( float const x, float const y ) : _x( x ), _y( y ) {
 
-    // std::cout << "Parametric Constructor called" << std::endl;
+    std::cout << "Point: Parametric Constructor called" << std::endl;
 
     return;
 }
 
 Point::Point( Point const & src ) {
 
-    // std::cout << "Copy Constructor called" << std::endl;
+    std::cout << "Point: Copy Constructor called" << std::endl;
     *this = src;
 
     return;
@@ -39,14 +39,14 @@ Point::Point( Point const & src ) {
 
 Point::~Point( void ) {
 
-    // std::cout << "Destructor called" << std::endl;
+    std::cout << "Point: Destructor called" << std::endl;
 
     return;
 }
 
 Point & Point::operator=( Point const & rhs ) {
 
-    // std::cout << "Assignment operator called" << std::endl;
+    std::cout << "Point: Assignment operator called" << std::endl;
     const_cast<Fixed&>(_x) = rhs._x;
     const_cast<Fixed&>(_y) = rhs._y;
 

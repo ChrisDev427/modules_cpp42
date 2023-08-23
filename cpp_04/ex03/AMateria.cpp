@@ -17,11 +17,12 @@ AMateria::AMateria( void ) {
     std::cout << B_GREEN << "AMateria -> Default Constructor called" << RESET << std::endl;
     
     type = "AMateria";
+    equiped = false;
     return;
 
 }
 
-AMateria::AMateria( std::string const & type ) : type( type ) {
+AMateria::AMateria( std::string const & type ) : equiped(false), type( type ) {
 
     std::cout << B_GREEN << "AMateria -> Parametric Constructor called" << RESET << std::endl;
     
@@ -60,6 +61,17 @@ std::string const & AMateria::getType() const {
     return type;
 
 }
+
+bool                AMateria::getEquiped( void ) const {
+
+    return equiped;
+}
+
+void                AMateria::setEquiped( bool param ) {
+
+    equiped = param;
+}
+
 
 void AMateria::use(ICharacter& target) {
 

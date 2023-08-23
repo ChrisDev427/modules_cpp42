@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:11:58 by chris             #+#    #+#             */
-/*   Updated: 2023/08/15 13:09:07 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/23 19:06:08 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,24 +73,27 @@ Character::~Character( void ) {
 
     std::cout << B_RED << "Character -> Destructor called" << RESET << std::endl;
 
-    for ( int i = 0; i < 4; i++ ) {
+    // for ( int i = 0; i < 4; i++ ) {
 
-        if ( _inventory[i] ) {
-            
-            delete _inventory[i];
-        }
-    }
-    delete[] _inventory;
+    //     if ( _inventory[i] ) {
+    //         std::cout << _name << std::endl;
+    //         delete _inventory[i];
+    //     }
+    // }
+    // delete[] _inventory;
 
+
+    // if ( _throwedInMemory > 0 ) {
+
+    //     for ( int i = 0; _throwedMaterias[i]; i++ ) {
+        
+    //     std::cout << _throwedInMemory << std::endl;
+    //         delete _throwedMaterias[i];
+    //         _throwedInMemory--;
+    //     }
+    //     // delete[] _throwedMaterias;
+    // }
    _instanceNb--;
-
-    if ( _throwedNb > 0 && _instanceNb == 0 ) {
-
-        for ( int i = 0; _throwedMaterias[i]; i++ ) {
-
-            delete _throwedMaterias[i];
-        }
-    }
     
     return;
 }
@@ -125,25 +128,37 @@ int Character::getInstNb( void ) {
 
 void Character::equip(AMateria* m) {
 
-    
-    for ( int i = 0; i < 4; i++ ) {
+    std::cout << ORANGE << "***** EQUIP FUNCTION **************************" << RESET << std::endl;
 
-        if ( !_inventory[i] ) {
-            
-            std::cout << ORANGE << "***** EQUIP FUNCTION **************************" << RESET << std::endl;
-            if ( m ) {
-                
+    if ( m ) {
+
+        if ( m->getEquiped()) {
+            std::cout << B_RED << "Materia [" << m << "] already equiped" << RESET << std::endl;
+            return;
+        }
+        for ( int i = 0; i < 4; i++ ) {
+
+            if ( !_inventory[i] ) {
+
+                for ( int j = 0; j < _throwedInMemory; j++ )    
+                    if ( _throwedMaterias[j] == m ) {
+                        puts("AAAAA");
+                        _unSaveMatToFree( m );
+                    }
+
+
                 _inventory[i] = m;
+                m->setEquiped( true );
                 std::cout << B_GRAY << this->getName() << RESET << BLUE << ITAL << " _inventory[" << i << "] equiped with " << m->getType() << RESET << NORM << std::endl;
                 std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
                 return;
             }
-            else {
-                std::cout << RED << "not valid materia" << RESET << std::endl;
-                std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
-                return;
-            }
         }
+    }
+    else {
+        std::cout << RED << "not valid materia" << RESET << std::endl;
+        std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
+        return;
     }
 }
 
@@ -157,7 +172,8 @@ void Character::unequip(int idx) {
         std::cout << BLUE << ITAL << "Throwing materia " << _inventory[idx]->getType() << " from _inventory[" << idx << "]" << RESET << NORM << std::endl;
 
         this->_saveMatToFree( _inventory[idx] );
-    
+
+        _inventory[idx]->setEquiped( false );
         _inventory[idx] = nullptr;
 
         std::cout << GRAY << ITAL << "throwed Materia[" << _throwedNb << "]" << RESET << NORM << std::endl;
@@ -193,7 +209,7 @@ void Character::_saveMatToFree( AMateria* toSave ) {
     }
     else if ( _checkDblPtr( _throwedMaterias, toSave ) == false ) {
         
-        _dupThrowedTab( _throwedTmp, _throwedMaterias, toSave );
+        _dupAddThrowedTab( _throwedTmp, _throwedMaterias, toSave );
 
         delete[] _throwedMaterias;
        
@@ -203,7 +219,38 @@ void Character::_saveMatToFree( AMateria* toSave ) {
     _throwedNb++;
 }
 
-void Character::_dupThrowedTab( AMateria** & dst, AMateria** src, AMateria* toSave ) {
+void Character::_unSaveMatToFree( AMateria* unSave ) {
+
+    _dupSuppThrowedTab( _throwedTmp, _throwedMaterias, unSave );
+
+    delete[] _throwedMaterias;
+    _throwedMaterias = _throwedTmp;
+    _throwedInMemory--;
+
+}
+
+void Character::_dupSuppThrowedTab( AMateria** & dst, AMateria** src, AMateria* unSave ) {
+
+    int size = 0;
+    
+    while ( src[size] )
+        size++;
+    
+    dst = new AMateria*[size];
+
+    for ( int i = 0; i < size; i++ ) {
+
+        if ( src[i] != unSave )
+            dst[i] = src[i];
+    }
+    dst[size] = nullptr;
+
+    for ( int i = 0; dst[i]; i++ ) {
+        std::cout << dst[i] << std::endl;
+    }
+}
+
+void Character::_dupAddThrowedTab( AMateria** & dst, AMateria** src, AMateria* toSave ) {
 
     int size = 0;
     
@@ -249,15 +296,17 @@ void Character::printInventory( void ) const {
 
 void Character::printMatToFree( void ) {
 
+    std::cout << ORANGE << "***** MATERIA'S SAVED IN MEMORY ***************" << RESET << std::endl;
     if ( _throwedMaterias ) {
-
-        std::cout << ORANGE << "***** MATERIA'S SAVED IN MEMORY ***************" << RESET << std::endl;
 
         for ( int i = 0; _throwedMaterias[i]; i++ ) {
 
             std::cout << GRAY << "saved[" << i << "] -> " << _throwedMaterias[i] << " " << B_BLUE << _throwedMaterias[i]->getType() << RESET << std::endl;
         }
         std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
+    }
+    else {
+        std::cout << B_RED << "No materia was thrown away" << RESET << std::endl;
     }
 }
 

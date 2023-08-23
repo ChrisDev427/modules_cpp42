@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:02:47 by chris             #+#    #+#             */
-/*   Updated: 2023/08/15 13:10:05 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/23 18:48:45 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void test3( void ) {
     src->printCreatedMateria();
 
     me->printInventory();
+    
 
     Character bob;
     bob = *me;
@@ -165,58 +166,120 @@ void test4( void ) {
 
 
     src->printCreatedMateria();
+    src2->printCreatedMateria();
     me->printInventory();
     bob->printInventory();
 
-    bob->use(0, *me);
-    me->use(0, *bob);
-    bob->use(1, *me);
-    me->use(1, *bob);
-    bob->use(2, *me);
-    me->use(2, *bob);
-    bob->use(3, *me);
-    me->use(3, *bob);
+    // bob->use(0, *me);
+    // me->use(0, *bob);
+    // bob->use(1, *me);
+    // me->use(1, *bob);
+    // bob->use(2, *me);
+    // me->use(2, *bob);
+    // bob->use(3, *me);
+    // me->use(3, *bob);
+    Character::printMatToFree();
 
-    // me->unequip( 0 );
-    // me->unequip( 1 );
-    // me->unequip( 2 );
-    // me->unequip( 3 );
+
+    me->unequip( 0 );
+    me->unequip( 1 );
+    me->unequip( 2 );
+    me->unequip( 3 );
+
+
 
     bob->unequip( 0 );
     bob->unequip( 1 );
     bob->unequip( 2 );
     bob->unequip( 3 );
 
-   
-    me->printInventory();
+    // Character::printMatToFree();
     bob->printInventory();
+    me->printInventory();
 
-    Character* cpy = new Character( *me );
-    Character* cpy2 = new Character( *me );
-    Character* cpy3 = new Character( *me );
+    // bob->equip(tmp);
+    Character::printMatToFree();
 
-    cpy->printInventory();
-    cpy2->printInventory();
-    cpy3->printInventory();
-
+    // me->equip(tmp);
+    bob->equip(tmp2);
+    bob->printInventory();
+    me->printInventory();
+    bob->unequip(0);
 
 
     Character::printMatToFree();
 
+    // bob->equip(tmp2);
+    // bob->printInventory();
+    
+   
+    // me->printInventory();
+    // bob->printInventory();
+
+    // Character* cpy = new Character( *me );
+    // Character* cpy2 = new Character( *me );
+    // Character* cpy3 = new Character( *me );
+
+    // cpy->printInventory();
+    // cpy2->printInventory();
+    // cpy3->printInventory();
+
+
+
+    // Character::printMatToFree();
+
    
 
 
 
     
 
-    delete bob; 
-    delete me; 
     delete src;
     delete src2;
-    delete cpy;
-    delete cpy2;
-    delete cpy3;
+    delete bob; 
+    delete me; 
+    // delete cpy;
+    // delete cpy2;
+    // delete cpy3;
     
+
+
+}
+
+void testReequip( void ) {
+
+    IMateriaSource* src = new MateriaSource(); 
+    src->learnMateria(new Ice()); 
+    src->learnMateria(new Cure());
+
+    src->printLearnedMateria();
+
+    Character* me = new Character("me");
+    Character* bob = new Character( "bob" ); 
+    AMateria* tmp;
+    AMateria* tmp2;
+
+    tmp = src->createMateria("ice");
+    tmp2 = src->createMateria("cure");
+    me->equip(tmp);
+    bob->equip(tmp);
+    me->printInventory();
+
+    me->use(0, *bob);
+
+    bob->equip(tmp2);
+
+    me->unequip(0);
+    me->printInventory();
+
+    bob->equip(tmp);
+    bob->printInventory();
+
+    Character::printMatToFree();
+
+    delete src;
+    delete me;
+    delete bob;
 
 
 }
@@ -225,7 +288,12 @@ int main() {
 
 
     // test1();
-    test3();
+    // test3();
+    test4();
+    // testReequip();
+
+    
+
     
 
 

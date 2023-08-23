@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 07:35:25 by chris             #+#    #+#             */
-/*   Updated: 2023/07/31 10:51:09 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/23 16:07:33 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ public:
     Fixed getX( void ) const;
     Fixed getY( void ) const;
 
-    void    setX( Point const & src );
+    // void    setX( Point const & src );
     static void print( Point const a, Point const b, Point const c, Point const point , bool inOut);
 
     

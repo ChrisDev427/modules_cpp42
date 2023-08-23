@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:03:27 by chris             #+#    #+#             */
-/*   Updated: 2023/08/15 11:38:53 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/23 17:05:10 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ private:
     std::string     _name;
 
     void _saveMatToFree( AMateria* toSave );
-    void _dupThrowedTab( AMateria**  & dst, AMateria** src, AMateria* toSave );
+    void _unSaveMatToFree( AMateria* unSave );
+    void _dupAddThrowedTab( AMateria**  & dst, AMateria** src, AMateria* toSave );
+    void _dupSuppThrowedTab( AMateria**  & dst, AMateria** src, AMateria* unSave );
     bool _checkDblPtr( AMateria** tab, AMateria* src ) const;
     
     static int             _instanceNb;

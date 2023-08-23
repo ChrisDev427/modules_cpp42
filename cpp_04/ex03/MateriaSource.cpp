@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:01:56 by chris             #+#    #+#             */
-/*   Updated: 2023/08/14 19:26:51 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/23 19:06:03 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,15 @@ MateriaSource::~MateriaSource( void ) {
 
     std::cout << B_RED << "MateriaSource -> Destructor called" << RESET << std::endl;
 
-    for ( int i = 0; i < 4; i++ ) {
+    // for ( int i = 0; i < 4; i++ ) {
         
-        if ( _materiaLearned[i] )
-            delete _materiaLearned[i];
+    //     if ( _materiaLearned[i] ) {
+    //         delete _materiaLearned[i];
+    //     }
         
-        // if ( _materia[i] )
-        //     delete _materia[i];
-    }
+    //     // if ( _materia[i] )
+    //     //     delete _materia[i];
+    // }
     return;
 
 }

@@ -35,10 +35,16 @@ public:
 
 
     std::string const & getType() const;
+
+    bool                getEquiped( void ) const;
+    void                setEquiped( bool param );
+
     virtual AMateria* clone() const = 0;
     virtual void use(ICharacter& target);
+
 protected:
 
+    bool        equiped;
     std::string type;
 
 };

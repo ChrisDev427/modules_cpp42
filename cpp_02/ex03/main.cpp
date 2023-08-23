@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:39:47 by chris             #+#    #+#             */
-/*   Updated: 2023/08/23 11:47:41 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/23 15:58:23 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 int main( void ) {
     
 
-    Point a(2, 1);
-    Point b(2.1, 1.2);
+    // Point a(2, 1);
+    // Point b(2.1, 1.2);
     Point c(-2.1, -1.2);
     
-    std::cout << a << std::endl;
-    std::cout << b << std::endl;
+    // std::cout << a << std::endl;
+    // std::cout << b << std::endl;
     std::cout << c << std::endl;
     // Point a( 2, 1 );
     // Point b( 0.0f, 2.2f );

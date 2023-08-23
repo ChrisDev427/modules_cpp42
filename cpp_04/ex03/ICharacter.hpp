@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:00:56 by chris             #+#    #+#             */
-/*   Updated: 2023/08/15 07:23:19 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/23 19:04:45 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class ICharacter
 
 public:
 
-    virtual ~ICharacter() {}
+    // virtual ~ICharacter() {}
     virtual std::string const & getName() const = 0;
     virtual void equip(AMateria* m) = 0;
     virtual void unequip(int idx) = 0;
