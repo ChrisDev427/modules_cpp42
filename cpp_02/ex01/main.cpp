@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:39:47 by chris             #+#    #+#             */
-/*   Updated: 2023/07/31 14:57:55 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/23 09:59:54 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,14 @@ int main( void ) {
     
     
     Fixed a;
-    Fixed const b( INT_MAX ); 
+    Fixed const b( 10 ); 
     Fixed const c( 42.42f ); 
-    Fixed const d( c );
+    Fixed const d( b );
 
-    a = Fixed( 143214.5354f );
+    a = Fixed( 1234.4321f );
 
     std::cout << "a is " << a << std::endl;
     std::cout << "b is " << b << std::endl;
-    std::cout << "b is " << b.toInt() << std::endl;
     std::cout << "c is " << c << std::endl;
     std::cout << "d is " << d << std::endl;
 

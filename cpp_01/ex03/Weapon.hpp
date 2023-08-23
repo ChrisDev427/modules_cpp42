@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:31:05 by chris             #+#    #+#             */
-/*   Updated: 2023/07/31 11:25:58 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/22 10:50:23 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ public:
     Weapon( std::string type );
     ~Weapon( void );
 
-    std::string&    getType( void );
+    const std::string &  getType( void );
     void            setType( std::string value );
 
 private:

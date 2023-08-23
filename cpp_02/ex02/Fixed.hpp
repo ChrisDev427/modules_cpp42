@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:30:24 by chris             #+#    #+#             */
-/*   Updated: 2023/07/31 14:49:19 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/23 11:32:33 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # include <iostream>
 # include <cmath>
-# include <limits.h>
+# include <limits>
 
 # define RESET   "\033[0m"
 # define RED     "\033[1;31m"

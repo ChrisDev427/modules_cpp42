@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   Intern.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,32 +12,36 @@
 
 
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
 # include "AForm.hpp"
-# include <iostream>
-# include <stdexcept>
-# include <fstream>
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
-class AForm;
 
-class ShrubberyCreationForm : virtual public AForm {
+// class AForm;
+
+
+class Intern {
 
     public:
 
-    
+        Intern( void );
+        Intern( Intern const & src );
+        virtual ~Intern( void );
 
-        ShrubberyCreationForm( void );
-        ShrubberyCreationForm( std::string const target );
-        ShrubberyCreationForm( ShrubberyCreationForm const & src );
-        virtual ~ShrubberyCreationForm( void );
+        Intern & operator=( Intern const & rhs );
 
-        ShrubberyCreationForm & operator=( ShrubberyCreationForm const & rhs );
+        AForm*  makeForm( std::string formName, std::string formTarget );
 
-        virtual void        execute( Bureaucrat const & executor ) const ;
+    private:
+
+        std::string _forms[3];
+        int         _formType;
 
 
 };
 
-#endif /******************************************************* SHRUBBERYCREATIONFORM_HPP*/
+#endif /******************************************************* INTERN_HPP*/

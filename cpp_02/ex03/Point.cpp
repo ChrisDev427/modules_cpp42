@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 07:35:21 by chris             #+#    #+#             */
-/*   Updated: 2023/07/31 10:51:56 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/23 11:02:10 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ void Point::print( Point const a, Point const b, Point const c, Point const poin
 
     for ( int i = 0; i < 4; i++) {
 
-        pointsCoord[i].x = points[i].getX().getRawBits() /15;
-        pointsCoord[i].y = points[i].getY().getRawBits() /15;
+        pointsCoord[i].x = points[i].getX().getRawBits() /40;
+        pointsCoord[i].y = points[i].getY().getRawBits() /40;
        
         if ( pointsCoord[i].x > xMax )
             xMax = pointsCoord[i].x;
@@ -117,16 +117,11 @@ void Point::print( Point const a, Point const b, Point const c, Point const poin
         std::cout << std::endl;
     }
     std::cout << std::endl << std::endl << std::endl;
-
 }
-
-
-
 
 std::ostream & operator<<( std::ostream & o, Point const & rhs ) {
 
     o << "( x = " << rhs.getX() << ", y = " << rhs.getY() << " )";
+
     return o;
-
 }
-

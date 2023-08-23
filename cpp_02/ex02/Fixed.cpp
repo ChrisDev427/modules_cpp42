@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:29:48 by chris             #+#    #+#             */
-/*   Updated: 2023/07/31 14:53:20 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/23 11:41:28 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Fixed::Fixed( void ) : _integer( 0 ) {
 
 Fixed::Fixed( int const n ) {
 
-    std::cout << GREEN << "Int Constructor called" << std::endl;
+    std::cout << GREEN << "Int Constructor called" << RESET << std::endl;
     
     _integer = static_cast<int long>(n) * (1 << _fractional); //decalage de 8 bits ( revient a faire (2^8) = 256 )
 

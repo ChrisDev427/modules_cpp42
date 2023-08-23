@@ -1,43 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:41:11 by chris             #+#    #+#             */
-/*   Updated: 2023/08/22 12:20:55 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/22 12:21:11 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
 # include "AForm.hpp"
 # include <iostream>
 # include <stdexcept>
 # include <fstream>
+# include <ctime>
+
 
 class AForm;
 
-class ShrubberyCreationForm : virtual public AForm {
+class RobotomyRequestForm : virtual public AForm {
 
     public:
 
     
 
-        ShrubberyCreationForm( void );
-        ShrubberyCreationForm( std::string const target );
-        ShrubberyCreationForm( ShrubberyCreationForm const & src );
-        virtual ~ShrubberyCreationForm( void );
+        RobotomyRequestForm( void );
+        RobotomyRequestForm( std::string const target );
+        RobotomyRequestForm( RobotomyRequestForm const & src );
+        virtual ~RobotomyRequestForm( void );
 
-        ShrubberyCreationForm & operator=( ShrubberyCreationForm const & rhs );
+        RobotomyRequestForm & operator=( RobotomyRequestForm const & rhs );
 
         virtual void        execute( Bureaucrat const & executor ) const ;
 
 
 };
 
-#endif /******************************************************* SHRUBBERYCREATIONFORM_HPP*/
+#endif /******************************************************* ROBOTOMYREQUESTFORM_HPP*/

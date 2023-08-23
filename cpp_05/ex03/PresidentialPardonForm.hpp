@@ -1,43 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:41:11 by chris             #+#    #+#             */
-/*   Updated: 2023/08/22 12:20:55 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/22 12:21:11 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
 # include "AForm.hpp"
 # include <iostream>
 # include <stdexcept>
 # include <fstream>
+# include <ctime>
+
 
 class AForm;
 
-class ShrubberyCreationForm : virtual public AForm {
+class PresidentialPardonForm : virtual public AForm {
 
     public:
 
     
 
-        ShrubberyCreationForm( void );
-        ShrubberyCreationForm( std::string const target );
-        ShrubberyCreationForm( ShrubberyCreationForm const & src );
-        virtual ~ShrubberyCreationForm( void );
+        PresidentialPardonForm( void );
+        PresidentialPardonForm( std::string const target );
+        PresidentialPardonForm( PresidentialPardonForm const & src );
+        virtual ~PresidentialPardonForm( void );
 
-        ShrubberyCreationForm & operator=( ShrubberyCreationForm const & rhs );
+        PresidentialPardonForm & operator=( PresidentialPardonForm const & rhs );
 
         virtual void        execute( Bureaucrat const & executor ) const ;
 
 
 };
 
-#endif /******************************************************* SHRUBBERYCREATIONFORM_HPP*/
+#endif /******************************************************* PRESIDENTIALPARDONFORM_HPP*/
