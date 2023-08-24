@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:03:27 by chris             #+#    #+#             */
-/*   Updated: 2023/08/24 19:02:32 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/24 12:32:54 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ public:
     virtual void    printInventory( void ) const;
 
     static void     printMatToFree( void );
+    static int      getInstNb( void );
 
 private:
 
@@ -49,8 +50,12 @@ private:
     std::string     _name;
 
     void _saveMatToFree( AMateria* toSave );
-    void _delMatThrowedTab( AMateria* unSave );
+    void _unSaveMatToFree( AMateria* unSave );
+    void _dupAddThrowedTab( AMateria**  & dst, AMateria** src, AMateria* toSave );
+    void _dupSuppThrowedTab( AMateria**  & dst, AMateria** src, AMateria* unSave );
+    bool _checkDblPtr( AMateria** tab, AMateria* src ) const;
     
+    static int             _instanceNb;
     static int             _instanceCopy;
     static int             _throwedInMemory;
     static AMateria**      _throwedMaterias;

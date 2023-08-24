@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:02:47 by chris             #+#    #+#             */
-/*   Updated: 2023/08/24 19:15:49 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/24 12:18:03 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include "Character.hpp"
 #include "IMateriaSource.hpp"
 #include "MateriaSource.hpp"
-#include "policeColor.hpp"
-
 
 void test1( void ) {
 
@@ -204,16 +202,7 @@ void test4( void ) {
     // me->equip(tmp);
     Character::printMatToFree();
 
-    me->equip(tmp2);
     me->equip(tmp);
-    me->equip(tmp2);
-    me->equip(tmp);
-    me->use(0, *me);
-    Character::printMatToFree();
-    bob->printInventory();
-    me->printInventory();
-    // me->unequip( 0 );
-
     Character::printMatToFree();
     bob->printInventory();
     me->printInventory();
