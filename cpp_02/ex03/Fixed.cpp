@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:29:48 by chris             #+#    #+#             */
-/*   Updated: 2023/08/23 15:55:59 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/24 05:47:34 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 
 Fixed::Fixed( void ) : _integer( 0 ) {
 
-    std::cout << GREEN << "Fixed: Default Constructor called" << RESET << std::endl;
+    // std::cout << GREEN << "Fixed: Default Constructor called" << RESET << std::endl;
 
     return;
 }
 
 Fixed::Fixed( int const n ) {
 
-    std::cout << GREEN << "Fixed: Int Constructor called" << std::endl;
+    // std::cout << GREEN << "Fixed: Int Constructor called" << std::endl;/
     
     _integer = static_cast<int long>(n) * (1 << _fractional); //decalage de 8 bits ( revient a faire (2^8) = 256 )
 
@@ -34,10 +34,10 @@ Fixed::Fixed( int const n ) {
 
 Fixed::Fixed( float const n ) {
 
-    std::cout << GREEN << "Fixed: Float Constructor called" << RESET << std::endl;
+    // std::cout << GREEN << "Fixed: Float Constructor called" << RESET << std::endl;
 
 
-    _integer = roundf(static_cast<float>(n) * (1 << _fractional)); //decalage de 8 bits ( revient a faire (2^8) = 256 )
+    _integer = roundf(static_cast<double>(n) * (1 << _fractional)); //decalage de 8 bits ( revient a faire (2^8) = 256 )
 
   
     return;
@@ -45,7 +45,7 @@ Fixed::Fixed( float const n ) {
 
 Fixed::Fixed( Fixed const & src ) {
 
-    std::cout << GREEN << "Fixed: Copy Constructor called" << RESET << std::endl;
+    // std::cout << GREEN << "Fixed: Copy Constructor called" << RESET << std::endl;
     *this = src;
 
     return;
@@ -53,7 +53,7 @@ Fixed::Fixed( Fixed const & src ) {
 
 Fixed::~Fixed( void ) {
 
-    std::cout << RED << "Fixed: Destructor called" << RESET << std::endl;
+    // std::cout << RED << "Fixed: Destructor called" << RESET << std::endl;
 
     return;
 }

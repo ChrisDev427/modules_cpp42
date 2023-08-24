@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:02:47 by chris             #+#    #+#             */
-/*   Updated: 2023/08/23 18:48:45 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/24 12:18:03 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,13 +198,15 @@ void test4( void ) {
     me->printInventory();
 
     // bob->equip(tmp);
-    Character::printMatToFree();
 
     // me->equip(tmp);
-    bob->equip(tmp2);
+    Character::printMatToFree();
+
+    me->equip(tmp);
+    Character::printMatToFree();
     bob->printInventory();
     me->printInventory();
-    bob->unequip(0);
+    // bob->unequip(0);
 
 
     Character::printMatToFree();

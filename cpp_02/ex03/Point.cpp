@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 07:35:21 by chris             #+#    #+#             */
-/*   Updated: 2023/08/23 16:11:54 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/24 06:23:23 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@
 
 Point::Point( void ) : _x( 0 ), _y( 0 ) {
 
-    std::cout << "Point: Default Constructor called" << std::endl;
+    // std::cout << "Point: Default Constructor called" << std::endl;
 
     return;
 }
 
 Point::Point( float const x, float const y ) : _x( x ), _y( y ) {
 
-    std::cout << "Point: Parametric Constructor called" << std::endl;
+    // std::cout << "Point: Parametric Constructor called" << std::endl;
 
     return;
 }
 
 Point::Point( Point const & src ) {
 
-    std::cout << "Point: Copy Constructor called" << std::endl;
+    // std::cout << "Point: Copy Constructor called" << std::endl;
     *this = src;
 
     return;
@@ -39,14 +39,14 @@ Point::Point( Point const & src ) {
 
 Point::~Point( void ) {
 
-    std::cout << "Point: Destructor called" << std::endl;
+    // std::cout << "Point: Destructor called" << std::endl;
 
     return;
 }
 
 Point & Point::operator=( Point const & rhs ) {
 
-    std::cout << "Point: Assignment operator called" << std::endl;
+    // std::cout << "Point: Assignment operator called" << std::endl;
     const_cast<Fixed&>(_x) = rhs._x;
     const_cast<Fixed&>(_y) = rhs._y;
 
@@ -63,61 +63,7 @@ Fixed Point::getY( void ) const {
     return this->_y;
 }
 
-void Point::print( Point const a, Point const b, Point const c, Point const point , bool inOut) {
 
-    t_coord pointsCoord[4];
-    Point   points[4];
-
-    points[0] = a;
-    points[1] = b;
-    points[2] = c;
-    points[3] = point;
-
-    int xMax = 0;
-    int yMax = 0;
-    int xMin = INT_MAX;
-    int yMin = INT_MAX;
-
-    for ( int i = 0; i < 4; i++) {
-
-        pointsCoord[i].x = points[i].getX().getRawBits() /40;
-        pointsCoord[i].y = points[i].getY().getRawBits() /40;
-       
-        if ( pointsCoord[i].x > xMax )
-            xMax = pointsCoord[i].x;
-        if ( pointsCoord[i].y > yMax )
-            yMax = pointsCoord[i].y;
-
-        if ( pointsCoord[i].x < xMin )
-            xMin = pointsCoord[i].x;
-        if ( pointsCoord[i].y < yMin )
-            yMin = pointsCoord[i].y;
-    }
-    if ( xMax > 160 || yMax > 65 )
-        return;
-    for ( int y = (yMax +3); y >= yMin; y-- ) {
-
-        for ( int x = 0; x <= xMax; x++ ) {
-           
-            if ( x == pointsCoord[0].x &&  y == pointsCoord[0].y )
-                std::cout << GREEN << "*a" << RESET;
-            else if ( x == pointsCoord[1].x &&  y == pointsCoord[1].y )
-                std::cout << B_CYAN << "*b" << RESET;
-            else if ( x == pointsCoord[2].x &&  y == pointsCoord[2].y )
-                std::cout << B_YELLOW << "*c" << RESET;
-            else if ( x == pointsCoord[3].x &&  y == pointsCoord[3].y )
-                if ( inOut == 0 )
-                    std::cout << RED << "*p" << RESET;
-                else
-                    std::cout << B_GREEN << "*p" << RESET;
-            else
-                std::cout << " ";
-
-        }
-        std::cout << std::endl;
-    }
-    std::cout << std::endl << std::endl << std::endl;
-}
 
 std::ostream & operator<<( std::ostream & o, Point const & rhs ) {
 

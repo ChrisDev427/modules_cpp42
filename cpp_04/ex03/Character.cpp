@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:11:58 by chris             #+#    #+#             */
-/*   Updated: 2023/08/23 19:06:08 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/24 12:35:25 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Character::Character( std::string const & name ) : _name( name ) {
 
     for ( int i = 0; i < 4; i++ ) {
 
-        _inventory[i] = nullptr;
+        _inventory[i] = NULL;
     }
 
     return;
@@ -73,26 +73,26 @@ Character::~Character( void ) {
 
     std::cout << B_RED << "Character -> Destructor called" << RESET << std::endl;
 
-    // for ( int i = 0; i < 4; i++ ) {
+    for ( int i = 0; i < 4; i++ ) {
 
-    //     if ( _inventory[i] ) {
-    //         std::cout << _name << std::endl;
-    //         delete _inventory[i];
-    //     }
-    // }
-    // delete[] _inventory;
+        if ( _inventory[i] ) {
+            
+            delete _inventory[i];
+        }
+    }
+    delete[] _inventory;
 
 
-    // if ( _throwedInMemory > 0 ) {
+    if ( _throwedInMemory > 0 ) {
 
-    //     for ( int i = 0; _throwedMaterias[i]; i++ ) {
+        for ( int i = 0; _throwedMaterias[i]; i++ ) {
         
-    //     std::cout << _throwedInMemory << std::endl;
-    //         delete _throwedMaterias[i];
-    //         _throwedInMemory--;
-    //     }
-    //     // delete[] _throwedMaterias;
-    // }
+        
+            delete _throwedMaterias[i];
+            _throwedInMemory--;
+        }
+        // delete[] _throwedMaterias;
+    }
    _instanceNb--;
     
     return;
@@ -132,8 +132,8 @@ void Character::equip(AMateria* m) {
 
     if ( m ) {
 
-        if ( m->getEquiped()) {
-            std::cout << B_RED << "Materia [" << m << "] already equiped" << RESET << std::endl;
+        if ( m->getEquiped() ) {
+            std::cout << B_RED << "Materia [" << m << " " << &m << "] already equiped" << RESET << std::endl;
             return;
         }
         for ( int i = 0; i < 4; i++ ) {
@@ -142,14 +142,14 @@ void Character::equip(AMateria* m) {
 
                 for ( int j = 0; j < _throwedInMemory; j++ )    
                     if ( _throwedMaterias[j] == m ) {
-                        puts("AAAAA");
+                        std::cout << ORANGE << ITAL << getName() << " picked up a materia from the ground" << RESET << NORM << std::endl;
                         _unSaveMatToFree( m );
                     }
 
 
                 _inventory[i] = m;
                 m->setEquiped( true );
-                std::cout << B_GRAY << this->getName() << RESET << BLUE << ITAL << " _inventory[" << i << "] equiped with " << m->getType() << RESET << NORM << std::endl;
+                std::cout << B_GRAY << getName() << RESET << BLUE << ITAL << " _inventory[" << i << "] equiped with " << m->getType() << RESET << NORM << std::endl;
                 std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
                 return;
             }
@@ -174,7 +174,7 @@ void Character::unequip(int idx) {
         this->_saveMatToFree( _inventory[idx] );
 
         _inventory[idx]->setEquiped( false );
-        _inventory[idx] = nullptr;
+        _inventory[idx] = NULL;
 
         std::cout << GRAY << ITAL << "throwed Materia[" << _throwedNb << "]" << RESET << NORM << std::endl;
         std::cout << GRAY << ITAL << "throwed in memory[" << _throwedInMemory << "]" << RESET << NORM << std::endl;
@@ -200,20 +200,25 @@ void Character::use(int idx, ICharacter& target) {
 void Character::_saveMatToFree( AMateria* toSave ) {
 
     if ( !_throwedMaterias ) {
+    puts("AAAAA");
         
         _throwedMaterias = new AMateria*[ 2 ];
         _throwedMaterias[ 0 ] = toSave;
-        _throwedMaterias[ 1 ] = nullptr;
+        _throwedMaterias[ 1 ] = NULL;
         _throwedInMemory++;
 
     }
     else if ( _checkDblPtr( _throwedMaterias, toSave ) == false ) {
+    // else  {
+    puts("BBBBB");
         
         _dupAddThrowedTab( _throwedTmp, _throwedMaterias, toSave );
 
         delete[] _throwedMaterias;
        
         _throwedMaterias = _throwedTmp;
+
+
         _throwedInMemory++;
     }
     _throwedNb++;
@@ -225,6 +230,7 @@ void Character::_unSaveMatToFree( AMateria* unSave ) {
 
     delete[] _throwedMaterias;
     _throwedMaterias = _throwedTmp;
+
     _throwedInMemory--;
 
 }
@@ -235,19 +241,24 @@ void Character::_dupSuppThrowedTab( AMateria** & dst, AMateria** src, AMateria* 
     
     while ( src[size] )
         size++;
-    
     dst = new AMateria*[size];
 
     for ( int i = 0; i < size; i++ ) {
 
-        if ( src[i] != unSave )
-            dst[i] = src[i];
-    }
-    dst[size] = nullptr;
+        if ( src[i] != unSave ) {
 
+            dst[i] = src[i];
+        std::cout << i << std::endl;
+        }
+       
+        
+    }
     for ( int i = 0; dst[i]; i++ ) {
         std::cout << dst[i] << std::endl;
+
     }
+    dst[size] = NULL;
+
 }
 
 void Character::_dupAddThrowedTab( AMateria** & dst, AMateria** src, AMateria* toSave ) {
@@ -264,7 +275,11 @@ void Character::_dupAddThrowedTab( AMateria** & dst, AMateria** src, AMateria* t
         dst[i] = src[i];
     }
     dst[size] = toSave;
-    dst[size +1] = nullptr;
+    dst[size +1] = NULL;
+    for ( int i = 0; dst[i]; i++ ) {
+        std::cout << dst[i] << std::endl;
+
+    }
 }
 
 bool Character::_checkDblPtr( AMateria** tab, AMateria* src ) const{
@@ -313,5 +328,5 @@ void Character::printMatToFree( void ) {
 int             Character::_instanceNb = 0;
 int             Character::_instanceCopy = 0;
 int             Character::_throwedInMemory = 0;
-AMateria**      Character::_throwedMaterias = nullptr;
-AMateria**      Character::_throwedTmp = nullptr;
+AMateria**      Character::_throwedMaterias = NULL;
+AMateria**      Character::_throwedTmp = NULL;
