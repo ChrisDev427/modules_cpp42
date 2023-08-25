@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:38:27 by chris             #+#    #+#             */
-/*   Updated: 2023/08/03 16:14:25 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/25 16:02:22 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ public:
 
 
     virtual void    attack(const std::string& target);
-    int             getValue( std::string value ) const;
+    void            guardGate( void );
+    // int             getValue( std::string value ) const;
     void            printValues( void ) const;
-    void guardGate( void );
     
 };
 

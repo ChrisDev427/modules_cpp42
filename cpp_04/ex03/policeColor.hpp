@@ -6,14 +6,14 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 08:39:54 by chris             #+#    #+#             */
-/*   Updated: 2023/08/24 19:13:21 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/25 08:30:57 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef POLICECOLOR_HPP
 # define POLICECOLOR_HPP
 
-extern bool constDesPrint;
+extern bool printConstDest;
 # define RED     "\033[31m"
 # define UL_RED     "\033[4;31m"
 # define B_RED     "\033[1;31m"

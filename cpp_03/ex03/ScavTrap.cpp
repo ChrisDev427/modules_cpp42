@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:37:13 by chris             #+#    #+#             */
-/*   Updated: 2023/08/03 17:06:43 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/25 16:51:26 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,27 +58,27 @@ ScavTrap & ScavTrap::operator=( ScavTrap const & rhs ) {
 
     std::cout << GREEN << "ScavTrap Assignment operator called\n" << RESET << std::endl;
 
-    hit = rhs.getValue( "hit" );
-    energy = rhs.getValue( "energy" );
-    attackDamage = rhs.getValue( "attackDamage" );
+    hit = rhs.hit; //rhs.getValue( "hit" );
+    energy = rhs.energy; //rhs.getValue( "energy" );
+    attackDamage = rhs.attackDamage; //rhs.getValue( "attackDamage" );
 
     return *this;
 
 }
 
-int ScavTrap::getValue( const std::string value ) const{
+// int ScavTrap::getValue( const std::string value ) const{
 
-    if ( value == "hit" )
-        return hit;
-    else if ( value == "energy" )
-        return energy;
-    else if ( value == "attackDamage" )
-        return attackDamage;
-    else
-        std::cout << "Error: getValue(): '" << value << "' value not found ";
+//     if ( value == "hit" )
+//         return hit;
+//     else if ( value == "energy" )
+//         return energy;
+//     else if ( value == "attackDamage" )
+//         return attackDamage;
+//     else
+//         std::cout << "Error: getValue(): '" << value << "' value not found ";
 
-    return -1;
-}
+//     return -1;
+// }
 
 void ScavTrap::printValues( void ) const{
 
@@ -116,7 +116,7 @@ void ScavTrap::attack( const std::string& target ) {
 void ScavTrap::guardGate( void ) {
 
     std::cout << B_ORANGE << "\nGuard Gate ! ***************************************" << RESET << std::endl;
-    std::cout << B_CYAN << "    " << name << " is now in Gate Keeper mode... " << RESET << std::endl;
+    std::cout << B_CYAN << "    " << "ScavTrap " << name << " is now in Gate Keeper mode... " << RESET << std::endl;
     std::cout << B_RED << "    Don't mess with " << name << " !!!" << RESET << std::endl;
     std::cout << ORANGE << "****************************************************\n" << std::endl;
 

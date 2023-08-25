@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:37:08 by chris             #+#    #+#             */
-/*   Updated: 2023/08/03 17:04:33 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/25 16:07:58 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ public:
     virtual void takeDamage(unsigned int amount);
     virtual void beRepaired(unsigned int amount);
 
-    virtual int getValue( const std::string value ) const;
+    // virtual int getValue( const std::string value ) const;
     void        printValues( void ) const;
 
    
@@ -64,8 +64,6 @@ protected:
     int         hit; 
     int         energy; 
     int         attackDamage;
-
-
 };
 
 

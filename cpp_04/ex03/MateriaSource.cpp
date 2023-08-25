@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:01:56 by chris             #+#    #+#             */
-/*   Updated: 2023/08/24 11:06:52 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/25 14:55:39 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,25 @@
 
 MateriaSource::MateriaSource( void ) {
 
-    std::cout << B_GREEN << "MateriaSource -> Default Constructor called" << RESET << std::endl;
-    for ( int i = 0; i < 4; i++ ) {
+    if (printConstDest){ std::cout << B_GREEN << "MateriaSource -> Default Constructor called" << RESET << std::endl; }
 
-        _materiaLearned[i] = nullptr;
-        _materia[i] = nullptr;
-    }
+    for ( int i = 0; i < 4; i++ ) { _materiaLearned[i] = NULL; }
     return;
 
 }
 
-// MateriaSource::MateriaSource( std::string const & type ) {
-
-//     std::cout << B_GREEN << "MateriaSource -> Parametric Constructor called" << RESET << std::endl;
-    
-//     return;
-
-// }
-
-
 MateriaSource::MateriaSource( MateriaSource const & src ) {
 
-    std::cout << B_GREEN << "MateriaSource -> Copy Constructor called" << RESET << std::endl;
-    *this = src;
+    if (printConstDest){ std::cout << B_GREEN << "MateriaSource -> Copy Constructor called" << RESET << std::endl; }
+    
+    for ( int i = 0; i < 4; i++ ) {
+
+        if ( src._materiaLearned[i] ) {
+
+            /*if (printConstDest){*/ std::cout << GREEN << ITAL << "cloning learned Materia's[" << i << "]" << RESET << NORM; //}
+            _materiaLearned[i] = src._materiaLearned[i]->clone();
+        }
+    }
 
     return;
 
@@ -44,7 +40,7 @@ MateriaSource::MateriaSource( MateriaSource const & src ) {
 
 MateriaSource::~MateriaSource( void ) {
 
-    std::cout << B_RED << "MateriaSource -> Destructor called" << RESET << std::endl;
+    if (printConstDest){ std::cout << B_RED << "MateriaSource -> Destructor called" << RESET << std::endl; }
 
     for ( int i = 0; i < 4; i++ ) {
         
@@ -52,8 +48,6 @@ MateriaSource::~MateriaSource( void ) {
             delete _materiaLearned[i];
         }
         
-        // if ( _materia[i] )
-        //     delete _materia[i];
     }
     return;
 
@@ -61,16 +55,26 @@ MateriaSource::~MateriaSource( void ) {
 
 MateriaSource & MateriaSource::operator=( MateriaSource const & rhs ) {
 
-    std::cout << B_GREEN << "MateriaSource -> Assignment operator called" << RESET << std::endl;
+    if (printConstDest){ std::cout << B_GREEN << "MateriaSource -> Assignment operator called" << RESET << std::endl; }
     
     for ( int i = 0; i < 4; i++ ) {
 
-        this->_materiaLearned[i] = rhs._materiaLearned[i];
-        if ( rhs._materia[i] )
-            this->_materia[i] = rhs._materia[i]->clone();
-
+        if ( _materiaLearned[i] ) {
+            
+            /*if (printConstDest){*/ std::cout << RED << ITAL << "deleting _learned Materia's[" << i << "] of " << RESET << NORM << std::endl; //}
+            delete _materiaLearned[i];
+        }
     }
-    
+
+    for ( int i = 0; i < 4; i++ ) {
+
+        if ( rhs._materiaLearned[i] ) {
+
+            /*if (printConstDest){*/ std::cout << GREEN << ITAL << "cloning  _learned Materia's[" << i << "]" << RESET << NORM; //}
+            _materiaLearned[i] = rhs._materiaLearned[i]->clone();
+        }
+    }
+
     return *this;
 
 }
@@ -91,6 +95,7 @@ void    MateriaSource::learnMateria(AMateria* m) {
             return;
         }
     }
+    delete m;
     std::cout << ITAL << RED << "You cannot learn more materias" << RESET << NORM << std::endl;
     std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
 
@@ -105,33 +110,18 @@ AMateria*   MateriaSource::createMateria(std::string const & type) {
         std::cout << RED << "Unknown materia type" << RESET << std::endl;
         return 0;
     }
+    
     for ( int i = 0; i < 4; i++ ) {
-
-        if ( !_materia[i] ) {
-
-            for ( int j = 0; j < 4; j++ ) {
-                
-                if ( _materiaLearned[j] && _materiaLearned[j]->getType() == type ) {
-
-                    std::cout << GREEN << "materia " << type << " created" << RESET << std::endl;
-                    std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
-
-                    
-                    return _materia[i] = _materiaLearned[j]->clone();
-                }
-                if ( j == 3 ) {
-                    
-                    std::cout << RED << "materia's not learned !" << RESET << std::endl;
-                    std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
-                    return 0;
-                }
-            }
-
+        
+        if ( _materiaLearned[i]->getType() == type ) {
+            AMateria* ret = _materiaLearned[i]->clone();
+            std::cout << GREEN << "materia " << type << " created" << RESET << std::endl;
+            std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
+            return (ret);
         }
     }
-    std::cout << RED << "4 materia's already created !" << RESET << std::endl;
+    std::cout << RED << "materia not learned !" << RESET << std::endl;
     std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
-
     return 0;
 }
 
@@ -143,7 +133,9 @@ void    MateriaSource::printLearnedMateria( void ) const {
     for ( int i = 0; i < 4; i++ ) {
         
         if ( _materiaLearned[i] )
-            std::cout << GREEN << "Learned [" << i << "] -> " << _materiaLearned[i]->getType() << RESET << std::endl;
+
+            std::cout << GRAY << "Learned[" << i << "] -> " << B_ORANGE << std::setw(4) << std::right << _materiaLearned[i]->getType() << RESET << GRAY << " " << _materiaLearned[i] << std::endl;
+
         else
             std::cout << GRAY << "_______ [" << i << "] -> " << ITAL << "empty" << RESET << NORM << std::endl;
     }
@@ -151,17 +143,4 @@ void    MateriaSource::printLearnedMateria( void ) const {
 
 }
 
-void    MateriaSource::printCreatedMateria( void ) const {
 
-    std::cout << ORANGE << "***** PRINT CREATED MATERIA *******************" << RESET << std::endl;
-
-    for ( int i = 0; i < 4; i++ ) {
-        
-        if ( _materia[i] )
-            std::cout << GREEN << "Created [" << i << "] -> " << _materia[i]->getType() << RESET << GRAY << " " << _materia[i] << RESET << std::endl;
-        else
-            std::cout << GRAY << "_______ [" << i << "] -> " << ITAL << "empty" << RESET << NORM << std::endl;
-    }
-    std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
-
-}

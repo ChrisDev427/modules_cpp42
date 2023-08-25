@@ -14,7 +14,7 @@
 
 Cure::Cure( void ) {
 
-    std::cout << B_GREEN << "Cure -> Default Constructor called" << RESET << std::endl;
+    if (printConstDest){ std::cout << B_GREEN << "Cure -> Default Constructor called" << RESET << std::endl; }
     type = "cure";
     return;
 
@@ -31,7 +31,7 @@ Cure::Cure( void ) {
 
 Cure::Cure( Cure const & src ) {
 
-    std::cout << B_GREEN << "Cure -> Copy Constructor called" << RESET << std::endl;
+    if (printConstDest){ std::cout << B_GREEN << "Cure -> Copy Constructor called" << RESET << std::endl; }
     *this = src;
 
     return;
@@ -40,7 +40,7 @@ Cure::Cure( Cure const & src ) {
 
 Cure::~Cure( void ) {
 
-    std::cout << B_RED << "Cure -> Destructor called" << RESET << std::endl;
+    if (printConstDest){ std::cout << B_RED << "Cure -> Destructor called" << RESET << std::endl; }
 
     return;
 
@@ -48,7 +48,7 @@ Cure::~Cure( void ) {
 
 Cure & Cure::operator=( Cure const & rhs ) {
 
-    std::cout << B_GREEN << "Cure -> Assignment operator called" << RESET << std::endl;
+    if (printConstDest){ std::cout << B_GREEN << "Cure -> Assignment operator called" << RESET << std::endl; }
     this->type = rhs.getType();
     return *this;
 
@@ -62,7 +62,7 @@ std::string const & Cure::getType() const {
 
 AMateria* Cure::clone() const {
 
-    std::cout << ORANGE << "***** Cure CLONE FUNCTION *********************" << RESET << std::endl;
+    std::cout << BLUE << "Cure Clone Function called" << RESET << std::endl;
 
     AMateria* ret = new Cure();
     return (ret);

@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:53:11 by chris             #+#    #+#             */
-/*   Updated: 2023/08/09 07:19:07 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/25 14:36:10 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ public:
     virtual AMateria*   createMateria(std::string const & type) = 0;
     
     virtual void        printLearnedMateria( void ) const = 0;
-    virtual void        printCreatedMateria( void ) const = 0;
 
 };
 

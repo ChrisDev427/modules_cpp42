@@ -14,7 +14,7 @@
 
 Ice::Ice( void ) {
 
-    std::cout << B_GREEN << "Ice -> Default Constructor called" << RESET << std::endl;
+    if (printConstDest){ std::cout << B_GREEN << "Ice -> Default Constructor called" << RESET << std::endl; }
     type = "ice";
     return;
 
@@ -31,7 +31,7 @@ Ice::Ice( void ) {
 
 Ice::Ice( Ice const & src ) {
 
-    std::cout << B_GREEN << "Ice -> Copy Constructor called" << RESET << std::endl;
+    if (printConstDest){ std::cout << B_GREEN << "Ice -> Copy Constructor called" << RESET << std::endl; }
     *this = src;
 
     return;
@@ -40,7 +40,7 @@ Ice::Ice( Ice const & src ) {
 
 Ice::~Ice( void ) {
 
-    std::cout << B_RED << "Ice -> Destructor called" << RESET << std::endl;
+    if (printConstDest){ std::cout << B_RED << "Ice -> Destructor called" << RESET << std::endl; }
 
     return;
 
@@ -48,7 +48,7 @@ Ice::~Ice( void ) {
 
 Ice & Ice::operator=( Ice const & rhs ) {
 
-    std::cout << B_GREEN << "Ice -> Assignment operator called" << RESET << std::endl;
+    if (printConstDest){ std::cout << B_GREEN << "Ice -> Assignment operator called" << RESET << std::endl; }
     this->type = rhs.getType();
     return *this;
 
@@ -62,7 +62,7 @@ std::string const & Ice::getType() const {
 
 AMateria* Ice::clone() const {
 
-    std::cout << ORANGE << "***** Ice CLONE FUNCTION **********************" << RESET << std::endl;
+    std::cout << BLUE << "Ice Clone Function called" << RESET << std::endl;
     AMateria* ret = new Ice();
     return (ret);
 

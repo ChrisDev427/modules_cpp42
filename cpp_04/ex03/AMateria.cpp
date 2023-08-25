@@ -14,7 +14,7 @@
 
 AMateria::AMateria( void ) {
 
-    std::cout << B_GREEN << "AMateria -> Default Constructor called" << RESET << std::endl;
+    if (printConstDest){ std::cout << B_GREEN << "AMateria -> Default Constructor called" << RESET << std::endl; }
     
     type = "AMateria";
     equiped = false;
@@ -24,7 +24,7 @@ AMateria::AMateria( void ) {
 
 AMateria::AMateria( std::string const & type ) : equiped(false), type( type ) {
 
-    std::cout << B_GREEN << "AMateria -> Parametric Constructor called" << RESET << std::endl;
+    if (printConstDest){ std::cout << B_GREEN << "AMateria -> Parametric Constructor called" << RESET << std::endl; }
     
     return;
 
@@ -33,7 +33,7 @@ AMateria::AMateria( std::string const & type ) : equiped(false), type( type ) {
 
 AMateria::AMateria( AMateria const & src ) {
 
-    std::cout << B_GREEN << "AMateria -> Copy Constructor called" << RESET << std::endl;
+    if (printConstDest){ std::cout << B_GREEN << "AMateria -> Copy Constructor called" << RESET << std::endl; }
     *this = src;
 
     return;
@@ -42,7 +42,7 @@ AMateria::AMateria( AMateria const & src ) {
 
 AMateria::~AMateria( void ) {
 
-    std::cout << B_RED << "AMateria -> Destructor called" << RESET << std::endl;
+    if (printConstDest){ std::cout << B_RED << "AMateria -> Destructor called" << RESET << std::endl; }
 
     return;
 
@@ -50,7 +50,7 @@ AMateria::~AMateria( void ) {
 
 AMateria & AMateria::operator=( AMateria const & rhs ) {
 
-    std::cout << B_GREEN << "AMateria -> Assignment operator called" << RESET << std::endl;
+    if (printConstDest){ std::cout << B_GREEN << "AMateria -> Assignment operator called" << RESET << std::endl; }
     this->type = rhs.getType();
     return *this;
 

@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:37:13 by chris             #+#    #+#             */
-/*   Updated: 2023/08/03 17:23:57 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/25 16:06:20 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ ClapTrap & ClapTrap::operator=( ClapTrap const & rhs ) {
 
     std::cout << GREEN << "ClapTrap Assignment operator called\n" << RESET << std::endl;
 
-    this->hit = rhs.getValue( "hit" );
-    this->energy = rhs.getValue( "energy" );
-    this->attackDamage = rhs.getValue( "attackDamage" );
+    this->hit = rhs.hit; //rhs.getValue( "hit" );
+    this->energy = rhs.energy; //rhs.getValue( "energy" );
+    this->attackDamage = rhs.attackDamage; //rhs.getValue( "attackDamage" );
 
     return *this;
 
@@ -83,19 +83,19 @@ void ClapTrap::printValues( void ) const{
 
 }
 
-int ClapTrap::getValue( const std::string value ) const{
+// int ClapTrap::getValue( const std::string value ) const{
 
-    if ( value == "hit" )
-        return hit;
-    if ( value == "energy" )
-        return energy;
-    if ( value == "attackDamage" )
-        return attackDamage;
-    else
-        std::cout << "Error: getValue() value not found" << std::endl;
+//     if ( value == "hit" )
+//         return hit;
+//     if ( value == "energy" )
+//         return energy;
+//     if ( value == "attackDamage" )
+//         return attackDamage;
+//     else
+//         std::cout << "Error: getValue() value not found" << std::endl;
 
-    return 0;
-}
+//     return 0;
+// }
 
 void ClapTrap::attack( const std::string& target ) {
 

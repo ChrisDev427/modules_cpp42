@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:03:27 by chris             #+#    #+#             */
-/*   Updated: 2023/08/24 19:02:32 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/25 12:01:13 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ public:
 private:
 
     int             _throwedNb;
-    AMateria**      _inventory;
+    AMateria*      _inventory[4];
     std::string     _name;
 
     void _saveMatToFree( AMateria* toSave );
