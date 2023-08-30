@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:37:08 by chris             #+#    #+#             */
-/*   Updated: 2023/08/01 14:45:34 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/28 11:47:31 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,17 @@ public:
     ClapTrap( void );
     ClapTrap( std::string cNane );
     ClapTrap( ClapTrap const & src );
-    ~ClapTrap( void ); virtual
+    virtual ~ClapTrap( void );
 
     ClapTrap & operator=( ClapTrap const & rhs );
 
     void attack(const std::string& target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
+    void printValues( void ) const;
 
    
-    int getValue( const std::string value ) const;
+    // int getValue( const std::string value ) const;
     
     std::string name;
     int         hit; 

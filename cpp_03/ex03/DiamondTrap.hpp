@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:38:27 by chris             #+#    #+#             */
-/*   Updated: 2023/08/25 16:30:11 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/27 21:08:32 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@ public:
     DiamondTrap( void );
     DiamondTrap( std::string name );
     DiamondTrap( DiamondTrap const & src );
-    ~DiamondTrap( void ); virtual
+    virtual ~DiamondTrap( void );
 
     DiamondTrap & operator=( DiamondTrap const & rhs );
 
-    // int         getValue( std::string value ) const;
     void        printValues( void ) const;
-
     void        whoAmI( void );
 
 

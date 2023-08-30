@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:38:27 by chris             #+#    #+#             */
-/*   Updated: 2023/08/25 16:02:22 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/28 14:11:07 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,14 @@ public:
     ScavTrap( void );
     ScavTrap( std::string name );
     ScavTrap( ScavTrap const & src );
-    ~ScavTrap( void ); virtual
+    virtual ~ScavTrap( void );
 
     ScavTrap & operator=( ScavTrap const & rhs );
 
-
-    virtual void    attack(const std::string& target);
-    void            guardGate( void );
-    // int             getValue( std::string value ) const;
-    void            printValues( void ) const;
+    void    attack(const std::string& target);
+    void    guardGate( void );
+    void    printValues( void ) const;
     
 };
-
 
 #endif /**********************************************************SCAVTRAP_HPP*/

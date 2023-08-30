@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:37:08 by chris             #+#    #+#             */
-/*   Updated: 2023/08/01 14:45:34 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/28 11:47:08 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 # define B_GRAY "\033[1;30m"
 # define ITAL "\e[3m"
 # define NORM "\e[0m"
-
 # include <iostream>
 # include <thread>
 
@@ -52,16 +51,15 @@ public:
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
 
-   
-    int getValue( const std::string value ) const;
-    
+    void printValues( void ) const;
+
+
+protected:
+
     std::string name;
     int         hit; 
     int         energy; 
     int         attackDamage; 
-
-    
-
 };
 
 

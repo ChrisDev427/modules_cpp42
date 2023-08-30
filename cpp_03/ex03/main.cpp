@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 17:22:05 by chris             #+#    #+#             */
-/*   Updated: 2023/08/25 17:08:54 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/28 14:54:02 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 #include "DiamondTrap.hpp"
-
-
-
 
 int main( void ) {
 
@@ -36,9 +33,9 @@ int main( void ) {
     alain.takeDamage( 20 );
     alain.takeDamage( 20 );
     alain.beRepaired( 25 );
-    alain.takeDamage( 20 );
-    alain.takeDamage( 20 );
-    alain.takeDamage( 20 );
+    alain.takeDamage( 40 );
+    alain.takeDamage( 40 );
+    alain.takeDamage( 40 );
     alain.attack( "tom" );
 
    
@@ -53,42 +50,55 @@ int main( void ) {
     chris.beRepaired( 25 );
     john.beRepaired( 25 );
 
+    chris.printValues();
+    carol.printValues();
+    alain.printValues();
+    john.printValues();
+    
+    std::cout << BLUE << "\n********************************************************************" << RESET << std::endl;
+    std::cout << BLUE << "********************** Special Function ****************************" << RESET << std::endl;
+    std::cout << BLUE << "********************************************************************\n" << RESET << std::endl;
+
     carol.guardGate();
     alain.highFivesGuys();
     john.guardGate();
     john.highFivesGuys();
     john.whoAmI();
 
+    std::cout << BLUE << "\n********************************************************************" << RESET << std::endl;
+    std::cout << BLUE << "************************** Copy ************************************" << RESET << std::endl;
+    std::cout << BLUE << "********************************************************************\n" << RESET << std::endl;
+
+   
+    ScavTrap    carolCpy(carol);
+    DiamondTrap johnCpy(john);
+
+    carolCpy.printValues();
+    johnCpy.printValues();
+
+    std::cout << BLUE << "\n********************************************************************" << RESET << std::endl;
+    std::cout << BLUE << "************************** Assign **********************************" << RESET << std::endl;
+    std::cout << BLUE << "********************************************************************\n" << RESET << std::endl;
+    
+    FragTrap mike( "Mike" );
+    DiamondTrap  kian( "Kian" );
+
+    mike.printValues();
+    kian.printValues();
+
+    mike = alain;
+    kian = john;
+
+    mike.printValues();
+    kian.printValues();
+    
+    std::cout << BLUE << "\n********************************************************************\n" << RESET << std::endl;
+
     chris.printValues();
     carol.printValues();
     alain.printValues();
     john.printValues();
 
-
-    
-
-    // john.attack("sd");
-    // john.whoAmI();
-    
-    // john.highFivesGuys();
-    // alain.highFivesGuys();
-    // carol.guardGate();
-    // // alain.highFivesGuys();
-    // // chris.attack( "Bouba" );
-    // // carol.attack( "Bouba" );
-    // // alain.attack( "Bouba" );
-    // // carol.guardGate();
-    // // alain.highFivesGuys();
-    // chris.printValues();
-    // carol.printValues();
-    // alain.printValues();
-    // john.printValues();
-
-    
-
-
-    
-    
 
     return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:37:08 by chris             #+#    #+#             */
-/*   Updated: 2023/08/25 16:07:58 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/27 20:11:58 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define ITAL "\e[3m"
 # define NORM "\e[0m"
 
+
 # include <iostream>
 # include <thread>
 
@@ -44,20 +45,15 @@ public:
     ClapTrap( void );
     ClapTrap( std::string nane );
     ClapTrap( ClapTrap const & src );
-    ~ClapTrap( void ); virtual
+    virtual ~ClapTrap( void );
 
     ClapTrap & operator=( ClapTrap const & rhs );
 
-    virtual void attack(const std::string& target);
-    virtual void takeDamage(unsigned int amount);
-    virtual void beRepaired(unsigned int amount);
+    void attack(const std::string& target);
+    void takeDamage(unsigned int amount);
+    void beRepaired(unsigned int amount);
+    void printValues( void ) const;
 
-    // virtual int getValue( const std::string value ) const;
-    void        printValues( void ) const;
-
-   
-    std::string getName( void ) const;
-    
 protected:
 
     std::string name;

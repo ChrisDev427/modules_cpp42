@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:38:27 by chris             #+#    #+#             */
-/*   Updated: 2023/08/01 14:56:54 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/28 14:33:28 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,22 @@
 # include <iostream>
 # include <thread>
 
-class ScavTrap : ClapTrap {
+class ScavTrap : public ClapTrap {
 
 public:
 
     ScavTrap( void );
-    ScavTrap( std::string sName );
+    ScavTrap( std::string name );
     ScavTrap( ScavTrap const & src );
-    ~ScavTrap( void ); virtual
+    virtual ~ScavTrap( void );
 
     ScavTrap & operator=( ScavTrap const & rhs );
 
     void attack(const std::string& target);
     void guardGate( void );
-
-    int getValue( std::string value ) const;
+    void printValues( void ) const;
 
 
 };
-
 
 #endif /**********************************************************SCAVTRAP_HPP*/

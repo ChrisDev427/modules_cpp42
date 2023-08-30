@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 17:22:05 by chris             #+#    #+#             */
-/*   Updated: 2023/08/01 14:59:55 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/28 14:31:23 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,12 @@ int main( void ) {
     carol.attack( "Bouba" );
     carol.guardGate();
 
+    carol.takeDamage( 30 );
+
     ScavTrap maurice( "Maurice" );
+    maurice.printValues();
     maurice = carol;
-
-    std::cout << maurice.getValue( "enerfgy" ) << std::endl;
-
-
-    
-    
+    maurice.printValues();
 
     return 0;
 }

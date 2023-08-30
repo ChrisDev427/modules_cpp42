@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:37:13 by chris             #+#    #+#             */
-/*   Updated: 2023/08/25 16:48:14 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/28 08:37:52 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ FragTrap::FragTrap( void ) {
     hit = 100;
     energy = 100;
     attackDamage = 30;
+    hitTmp = hit;
+    attackDamageTmp = attackDamage;
     return;
 }
 
@@ -30,19 +32,24 @@ FragTrap::FragTrap( std::string sName ) : ClapTrap(sName) {
     std::cout << GREEN << "FragTrap Parametric Constructor called " << RESET;
     std::cout << B_GRAY << ITAL << "(instance -> [" << sName << "])\n" << RESET << NORM <<std::endl;
     
-    ClapTrap::hit = 100;
-    ClapTrap::energy = 100;
-    ClapTrap::attackDamage = 30;
-
-    hitTmp = ClapTrap::hit;
-    attackDamageTmp = ClapTrap::attackDamage;
+    hit = 100;
+    energy = 100;
+    attackDamage = 30;
+    hitTmp = hit;
+    attackDamageTmp = attackDamage;
     return;
 }
 
 FragTrap::FragTrap( FragTrap const & src ) {
 
     std::cout << GREEN << "FragTrap Copy Constructor called" << RESET << std::endl;
-    *this = src;
+
+    name = src.name;
+    hit = src.hit;
+    energy = src.energy;
+    attackDamage = src.attackDamage;
+    hitTmp = hit;
+    attackDamageTmp = attackDamage;
 
     return;
 
@@ -60,27 +67,24 @@ FragTrap & FragTrap::operator=( FragTrap const & rhs ) {
 
     std::cout << GREEN << "FragTrap Assignment operator called\n" << RESET << std::endl;
 
-    hit = rhs.hit; //rhs.getValue( "hit" );
-    energy = rhs.energy;//rhs.getValue( "energy" );
-    attackDamage = rhs.attackDamage;//rhs.getValue( "attackDamage" );
+    name = rhs.name;
+    hit = rhs.hit;
+    energy = rhs.energy;
+    attackDamage = rhs.attackDamage;
+    hitTmp = hit;
+    attackDamageTmp = attackDamage;
 
     return *this;
 
 }
 
-// int FragTrap::getValue( const std::string value ) const{
+void FragTrap::highFivesGuys( void ) {
 
-//     if ( value == "hit" )
-//         return hit;
-//     else if ( value == "energy" )
-//         return energy;
-//     else if ( value == "attackDamage" )
-//         return attackDamage;
-//     else
-//         std::cout << "Error: getValue(): '" << value << "' value not found ";
+    std::cout << B_ORANGE << "\nHighFivesGuys ! ************************************" << RESET << std::endl;
+    std::cout << B_CYAN << "    FragTrap " << name << "\n    is asking for a high fives !!!" << RESET << std::endl;
+    std::cout << ORANGE << "****************************************************\n" << std::endl;
 
-//     return -1;
-// }
+}
 
 void FragTrap::printValues( void ) const{
 
@@ -93,13 +97,5 @@ void FragTrap::printValues( void ) const{
     std::cout << B_ORANGE << attackDamage;
     std::cout << B_BLUE << "]" << RESET << std::endl;
     std::cout << B_GRAY << "----------------------------------------------" << RESET << std::endl;
-
-}
-
-void FragTrap::highFivesGuys( void ) {
-
-    std::cout << B_ORANGE << "\nHighFivesGuys ! ************************************" << RESET << std::endl;
-    std::cout << B_CYAN << "    FragTrap " << name << "\n    is asking for a high fives !!!" << RESET << std::endl;
-    std::cout << ORANGE << "****************************************************\n" << std::endl;
 
 }

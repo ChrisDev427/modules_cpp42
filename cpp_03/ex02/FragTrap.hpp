@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:38:27 by chris             #+#    #+#             */
-/*   Updated: 2023/08/18 16:14:29 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/28 14:33:15 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,19 @@
 # include <iostream>
 # include <thread>
 
-class FragTrap : ClapTrap {
+class FragTrap : public ClapTrap {
 
 public:
 
     FragTrap( void );
-    FragTrap( std::string sName );
+    FragTrap( std::string name );
     FragTrap( FragTrap const & src );
-    ~FragTrap( void ); virtual
+    virtual ~FragTrap( void );
 
     FragTrap & operator=( FragTrap const & rhs );
 
-    void attack(const std::string& target); // Verifier si besoin de cette fonction !!!
     void highFivesGuys( void );
-
-    int getValue( std::string value ) const;
-
+    void printValues( void ) const;
 
 };
 

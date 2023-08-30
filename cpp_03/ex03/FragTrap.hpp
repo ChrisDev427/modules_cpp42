@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:38:27 by chris             #+#    #+#             */
-/*   Updated: 2023/08/25 16:40:06 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/28 08:50:11 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ public:
     FragTrap( void );
     FragTrap( std::string name );
     FragTrap( FragTrap const & src );
-    ~FragTrap( void ); virtual
+    virtual ~FragTrap( void );
 
     FragTrap & operator=( FragTrap const & rhs );
 
-    void        highFivesGuys( void );
-    void        printValues( void ) const;
+    void highFivesGuys( void );
+    void printValues( void ) const;
 
 protected:
 
     int hitTmp; 
-    int attackDamageTmp; 
+    int attackDamageTmp;
 
 };
 
