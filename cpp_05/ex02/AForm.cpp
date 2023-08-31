@@ -24,7 +24,7 @@ AForm::AForm( void ) : _gradeSign(0), _gradeExec(0), _signed(false), _name( "Unk
 }
 
 
-AForm::AForm( AForm const & src ) : _gradeSign(src._gradeSign), _gradeExec(src._gradeExec), _name( src._name ) {
+AForm::AForm( AForm const & src ) : _gradeSign(src._gradeSign), _gradeExec(src._gradeExec), _signed( src._signed ), _name( src._name ) {
 
     std::cout << GREEN << "AForm: Copy Constructor called" << RESET << std::endl;
 
@@ -52,15 +52,10 @@ AForm & AForm::operator=( AForm const & rhs ) {
 }
 
 std::string AForm::getName( void ) const { return _name; }
-
 std::string AForm::getTarget( void ) const { return _target; }
-
 int         AForm::getGradeSign( void ) const { return _gradeSign; }
-
 int         AForm::getGradeExec( void ) const { return _gradeExec; }
-
 bool        AForm::getSigned( void ) const { return _signed; }
-
 std::string AForm::getFormState( bool state ) const {
 
     if ( state == true ) {
@@ -71,37 +66,23 @@ std::string AForm::getFormState( bool state ) const {
 }
 
 void AForm::setName( std::string name ) { const_cast<std::string&>( _name ) = name; }
-
 void AForm::setTarget( std::string target ) { const_cast<std::string&>( _target ) = target; }
-
 void AForm::setGradeSign( int sign ) { const_cast<int&>( _gradeSign) = sign; }
-
 void AForm::setGradeExec( int exec ) { const_cast<int&>( _gradeExec) = exec; }
-
 void AForm::setSigned( bool sign ) { _signed = sign; }
 
+void AForm::beSigned( Bureaucrat & ref ) {
 
-void        AForm::beSigned( Bureaucrat & ref ) {
-
-    if ( ref.getGrade() <= _gradeSign ) {
-
-        _signed = true;
-    }
-    else {
-
-        throw gradeExcept( RED "AForm::GradeTooLowException" RESET );
-    }
+    if ( ref.getGrade() <= _gradeSign ) { _signed = true; }
+    else { throw gradeExcept( RED "AForm::GradeTooLowException" RESET ); }
 }
-
-
 
 void        AForm::checkAccess( Bureaucrat const & executor ) const {
 
-    if ( getSigned() == false ) { throw gradeExcept( RED "ShrubberyCreationForm::UnsignedFormException\n" RESET ); }
-    if ( executor.getGrade() > getGradeExec() ) { throw gradeExcept( RED "ShrubberyCreationForm::GradeExecToLowException\n" RESET ); }
+    if ( getSigned() == false ) { throw gradeExcept( RED "AForm::UnsignedFormException\n" RESET ); }
+    if ( executor.getGrade() > getGradeExec() ) { throw gradeExcept( RED "AForm::GradeExecToLowException\n" RESET ); }
 
 }
-
 
 const char* AForm::gradeExcept::what() const throw() { return _errorType; }
 

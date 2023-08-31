@@ -79,11 +79,8 @@ void        RobotomyRequestForm::execute( Bureaucrat const & executor ) const {
     checkAccess( executor );
 
     std::cout << RED << "(!(!(! VrrrrrBrrrrrZzzzzzGrrrrrSrrrrr !)!)!)" << RESET << std::endl;
-
-    // std::srand(static_cast<unsigned int>(std::time(nullptr)));
-    int randomIndex = std::rand() % 50;
-
-    if ( randomIndex > 25 )
+    srand(time(0));
+    if (rand() % 2 == 0)
         std::cout << GREEN <<  getTarget() << " has been robotomised with success !" << RESET << std::endl;
     else
         std::cout << RED <<  getTarget() << " failed robotomization !" << RESET << std::endl;

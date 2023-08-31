@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:48:02 by chris             #+#    #+#             */
-/*   Updated: 2023/08/07 09:25:57 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/30 09:46:54 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ void test1( void ) {
     const Animal* j = new Dog();
 
     a.makeSound();
-    a.printArray();
     a.setPtr( "Blublublu" );
-    std::cout << "type -> " << a.getType() << std::endl;
+    a.printArray();
+    std::cout << "a = " << a.getType() << std::endl;
 
     i->makeSound();
-    std::cout << CYAN << "getType function -> " << i->getType() << RESET << std::endl;
+    std::cout << CYAN << "i = " << i->getType() << RESET << std::endl;
     i->setPtr( "Array From Cat" );
     i->printArray();
 
     j->makeSound();
-    std::cout << CYAN << "getType function -> " << j->getType() << RESET << std::endl;
+    std::cout << CYAN << "j = " << j->getType() << RESET << std::endl;
     j->setPtr( "Array From Dog" );
     j->printArray();
 
@@ -42,7 +42,7 @@ void test1( void ) {
 
 void test2( void ) {
 
-    int size = 5;
+    int size = 6;
     const Animal* tab[size];
     initTab( tab, size );
     initStrings( tab, size );
@@ -99,31 +99,7 @@ void test4( void ) {
 
 //******************************************************************************
 
-
 void test5( void ) {
-
-    Dog A;
-
-    A.setPtr( "Hello 42" );
-
-    std::cout << B_CYAN << "** A ** " << RESET;
-    A.printArray();
-    
-//---------------------------------------------
-
-    Dog B;
-
-    B = A;
-
-    std::cout << B_CYAN << "B type = " << B.getType() << RESET << std::endl;
-    std::cout << B_CYAN << "** B ** " << RESET;
-    B.printArray();
-
-
-}
-
-
-void test6( void ) {
 
     Cat* A = new Cat();
 
@@ -144,6 +120,28 @@ void test6( void ) {
 
     delete A;
     delete B;
+
+
+}
+
+void test6( void ) {
+
+    Dog A;
+
+    A.setPtr( "Hello 42" );
+
+    std::cout << B_CYAN << "** A ** " << RESET;
+    A.printArray();
+    
+//---------------------------------------------
+
+    Dog B;
+
+    B = A;
+
+    std::cout << B_CYAN << "B type = " << B.getType() << RESET << std::endl;
+    std::cout << B_CYAN << "** B ** " << RESET;
+    B.printArray();
 
 
 }
@@ -173,6 +171,11 @@ int main() {
 //******************************************************************************
 //    test6();
 //******************************************************************************
+
+    // Dog basic;
+    // {
+    //     Dog tmp = basic;
+    // }
 
     // system("leaks a.out");
     return 0; 

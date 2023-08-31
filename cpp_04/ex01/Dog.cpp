@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:14:23 by chris             #+#    #+#             */
-/*   Updated: 2023/08/07 08:30:41 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/30 08:49:20 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,6 @@ void Dog::printArray( void ) const {
 
 void Dog::makeSound() const{
 
-    std::cout << B_CYAN << "type -> " << type << " says: Wouaf Wouaf Wouaf..." << RESET << std::endl;
+    std::cout << B_CYAN << type << " says: Wouaf Wouaf Wouaf..." << RESET << std::endl;
 
 }

@@ -21,7 +21,6 @@ PresidentialPardonForm::PresidentialPardonForm( void ) {
     setGradeSign( 25 );
     setGradeExec( 5 );
     
-    
     return;
 }
 
@@ -33,9 +32,7 @@ PresidentialPardonForm::PresidentialPardonForm( std::string const target ) {
     setTarget( target );
     setGradeSign( 25 );
     setGradeExec( 5 );
-    
-    
-    
+
     return;
 }
 
@@ -79,7 +76,5 @@ void        PresidentialPardonForm::execute( Bureaucrat const & executor ) const
     checkAccess( executor );
 
     std::cout << GREEN << getTarget() << " has been forgiven from Zaphod Beeblebrox" << RESET << std::endl;
-
-    
 
 }

@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:14:28 by chris             #+#    #+#             */
-/*   Updated: 2023/08/07 10:02:52 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/30 08:57:56 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ public:
 
     std::string getType( void ) const;
 
+    virtual void makeSound() const;
     virtual void setPtr( std::string str ) const;
     virtual void printArray( void ) const;
-    virtual void makeSound() const;
 
 private:
 

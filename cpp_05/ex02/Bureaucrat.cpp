@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:51:07 by chris             #+#    #+#             */
-/*   Updated: 2023/08/22 08:56:12 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/31 10:46:29 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ void        Bureaucrat::signForm( AForm & ref ) {
 }
 
 void   Bureaucrat::executeForm( AForm const & form ) {
-
 
     try { form.execute( *this ); std::cout << GREEN << _name << " executed " << form.getName() << RESET << std::endl;}
     catch ( AForm::gradeExcept& e ) { std::cerr << e.what(); }

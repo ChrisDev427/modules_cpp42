@@ -6,11 +6,9 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:41:11 by chris             #+#    #+#             */
-/*   Updated: 2023/08/19 18:37:47 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/31 08:53:05 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
@@ -53,6 +51,7 @@ class Bureaucrat {
         void        incremGrade( void );
         void        decremGrade( void );
         void        signForm( Form & ref );
+        
     private:
 
         int                 _grade;

@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:02:47 by chris             #+#    #+#             */
-/*   Updated: 2023/08/25 15:33:51 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/30 15:58:33 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void test1( void ) {
 
     AMateria* clone = I->clone();
     std::cout << clone->getType() << std::endl;
+
     ICharacter* src = new Character( "CHRIS" );
     I->use( *src );
-
-
 
     delete I;
     delete C;
     delete clone;
+    delete src;
 
 }
 void test2( void ) {
@@ -50,7 +50,6 @@ void test2( void ) {
     src->learnMateria(new Ice()); 
     src->learnMateria(new Cure());
     
-    src->printLearnedMateria();
 
     Character* me = new Character("me");
     AMateria* tmp;
@@ -59,8 +58,6 @@ void test2( void ) {
     me->equip(tmp);
     tmp = src->createMateria("cure");
     me->equip(tmp);
-
-   
 
     me->printInventory();
 
@@ -81,6 +78,8 @@ void test2( void ) {
 
     me->unequip( 0 );
     me->unequip( 1 );
+    me->printInventory();
+
    
     Character::printMatToFree();
 
@@ -98,7 +97,6 @@ void test3( void ) {
     src->learnMateria(new Ice()); 
     src->learnMateria(new Cure());
     
-    src->printLearnedMateria();
 
     Character* me = new Character("me");
     AMateria* tmp;
@@ -130,171 +128,97 @@ void test4( void ) {
     src->learnMateria(new Ice()); 
     src->learnMateria(new Cure());
     
-    src->printLearnedMateria();
-
-    IMateriaSource* src2 = new MateriaSource(); 
-    src2->learnMateria(new Ice()); 
-    src2->learnMateria(new Cure());
-    src2->learnMateria(new Ice()); 
-    src2->learnMateria(new Cure());
-
-    src2->printLearnedMateria();
-
     Character* me = new Character("me");
-    Character* Bob = new Character( "Bob" ); 
-    AMateria* tmp;
-    AMateria* tmp2;
+    Character* Bob = new Character( "Bob" );
 
-   
-    tmp = src->createMateria("ice");
-    me->equip(tmp);
-    tmp2 = src2->createMateria("ice");
-    Bob->equip(tmp2);
+    AMateria* cure1;
+    cure1 = src->createMateria("cure");
+    me->equip(cure1);
 
-    
-    tmp = src->createMateria("cure");
-    me->equip(tmp);
-    tmp2 = src2->createMateria("ice");
-    Bob->equip(tmp2);
+    AMateria* cure2;
+    cure2 = src->createMateria("cure");
+    Bob->equip(cure2);
 
-    tmp = src->createMateria("ice");
-    me->equip(tmp);
-    tmp2 = src2->createMateria("cure");
-    Bob->equip(tmp2);
+    AMateria* cure3;
+    cure3 = src->createMateria("cure");
+    me->equip(cure3);
 
-    tmp = src->createMateria("cure");
-    me->equip(tmp);
-    tmp2 = src2->createMateria("cure");
-    Bob->equip(tmp2);
+    AMateria* cure4;
+    cure4 = src->createMateria("cure");
+    Bob->equip(cure4);
 
+    AMateria* ice1;
+    ice1 = src->createMateria("ice");
+    me->equip(ice1);
+
+    AMateria* ice2;
+    ice2 = src->createMateria("ice");
+    Bob->equip(ice2);
+
+    AMateria* ice3;
+    ice3 = src->createMateria("ice");
+    Bob->equip(ice3);
+
+    AMateria* ice4;
+    ice4 = src->createMateria("ice");
+    me->equip(ice4);
+    me->unequip(3);
+    me->use(3, *Bob);
+    Bob->unequip(2);
+    Bob->equip(ice4);
 
 
     me->printInventory();
     Bob->printInventory();
 
-    // Bob->use(0, *me);
-    // me->use(0, *Bob);
-    // Bob->use(1, *me);
-    // me->use(1, *Bob);
-    // Bob->use(2, *me);
-    // me->use(2, *Bob);
-    // Bob->use(3, *me);
-    // me->use(3, *Bob);
-    Character::printMatToFree();
+    Bob->use(0, *me);
+    me->use(0, *Bob);
+    Bob->use(1, *me);
+    me->use(1, *Bob);
+    Bob->use(2, *me);
+    me->use(2, *Bob);
+    Bob->use(3, *me);
+    me->use(3, *Bob);
 
+    Character::printMatToFree();
 
     me->unequip( 0 );
     me->unequip( 1 );
     me->unequip( 2 );
     me->unequip( 3 );
 
-
-
     Bob->unequip( 0 );
     Bob->unequip( 1 );
     Bob->unequip( 2 );
     Bob->unequip( 3 );
 
-    // Character::printMatToFree();
+    Character::printMatToFree();
+    
     Bob->printInventory();
     me->printInventory();
 
-    // Bob->equip(tmp);
+    Bob->equip(cure1);
 
-    // me->equip(tmp);
+    me->equip(cure2);
+
     Character::printMatToFree();
 
-    me->equip(tmp2);
-    me->equip(tmp);
-    me->equip(tmp2);
-    me->equip(tmp);
+    me->equip(cure3);
+    me->equip(cure4);
+    me->equip(ice1);
+    me->equip(ice2);
     me->use(0, *me);
-    Character::printMatToFree();
-    Bob->printInventory();
-    me->printInventory();
-    // me->unequip( 0 );
+    Bob->use( 2, *me );
 
     Character::printMatToFree();
     Bob->printInventory();
     me->printInventory();
-    // Bob->unequip(0);
-
-
     Character::printMatToFree();
-
-    // Bob->equip(tmp2);
-    // Bob->printInventory();
-    
-   
-    // me->printInventory();
-    // Bob->printInventory();
-
-    // Character* cpy = new Character( *me );
-    // Character* cpy2 = new Character( *me );
-    // Character* cpy3 = new Character( *me );
-
-    // cpy->printInventory();
-    // cpy2->printInventory();
-    // cpy3->printInventory();
-
-
-
-    // Character::printMatToFree();
-
-   
-
-
-
-    
 
     delete src;
-    delete src2;
     delete Bob; 
     delete me; 
-    // delete cpy;
-    // delete cpy2;
-    // delete cpy3;
-    
-
-
-}
-
-void testReequip( void ) {
-
-    IMateriaSource* src = new MateriaSource(); 
-    src->learnMateria(new Ice()); 
-    src->learnMateria(new Cure());
-
-  
-
-    Character* me = new Character("me");
-    Character* Bob = new Character( "Bob" ); 
-    AMateria* tmp;
-    AMateria* tmp2;
-
-    tmp = src->createMateria("ice");
-    tmp2 = src->createMateria("cure");
-    me->equip(tmp);
-    Bob->equip(tmp);
-    me->printInventory();
-
-    me->use(0, *Bob);
-
-    Bob->equip(tmp2);
-
-    me->unequip(0);
-    me->printInventory();
-
-    Bob->equip(tmp);
-    Bob->printInventory();
-
-    Character::printMatToFree();
-
-    delete src;
-    delete me;
-    delete Bob;
-
-
+ 
 }
 
 void testCopy( void ) {
@@ -302,7 +226,6 @@ void testCopy( void ) {
     IMateriaSource* src = new MateriaSource(); 
     src->learnMateria(new Ice()); 
     src->learnMateria(new Cure());
-    src->printLearnedMateria();
 
 //----------------------------------------------------------------------
 
@@ -351,13 +274,12 @@ std::cout << "******************************************************************
     Character* carol = new Character(*Bob); // Copy
     carol->printInventory();
 
-    delete carol;
-
-    carol = new Character(*chris);
-    carol->printInventory();
+std::cout << "********************************************************************************" << std::endl;
+std::cout << "********************************************************************************\n" << std::endl;
 
     *chris = *Bob; // Assignment
     chris->printInventory();
+    
     delete carol;
     delete Bob;
     delete chris;
@@ -366,21 +288,12 @@ std::cout << "******************************************************************
 
 int main() {
 
-
     // test1();
+    // test2();
     // test3();
-    // test4();
-    // testReequip();
-
-    testCopy();
-
-    
-
-    
-
-
-
-
-    system ("leaks a.out");
+    test4();
+    // testCopy();
+   
+    // system ("leaks a.out");
     return 0;
 }

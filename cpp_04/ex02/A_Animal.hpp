@@ -33,6 +33,7 @@ public:
 
     virtual std::string getType( void ) const = 0;
     virtual void makeSound() const = 0;
+    
     virtual void setPtr( std::string str ) const = 0;
     virtual void printArray( void ) const = 0;
 

@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 09:01:56 by chris             #+#    #+#             */
-/*   Updated: 2023/08/25 14:55:39 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/30 10:03:42 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,23 +124,3 @@ AMateria*   MateriaSource::createMateria(std::string const & type) {
     std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
     return 0;
 }
-
-
-void    MateriaSource::printLearnedMateria( void ) const {
-
-    std::cout << ORANGE << "***** PRINT LEARNED MATERIA *******************" << RESET << std::endl;
-
-    for ( int i = 0; i < 4; i++ ) {
-        
-        if ( _materiaLearned[i] )
-
-            std::cout << GRAY << "Learned[" << i << "] -> " << B_ORANGE << std::setw(4) << std::right << _materiaLearned[i]->getType() << RESET << GRAY << " " << _materiaLearned[i] << std::endl;
-
-        else
-            std::cout << GRAY << "_______ [" << i << "] -> " << ITAL << "empty" << RESET << NORM << std::endl;
-    }
-    std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
-
-}
-
-

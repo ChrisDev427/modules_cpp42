@@ -16,14 +16,6 @@ Intern::Intern( void ) {
 
     std::cout << GREEN << "Intern: Default Constructor called" << RESET << std::endl;
 
-    _forms[0] = "shrubbery creation";
-    _forms[1] = "robotomy request";
-    _forms[2] = "presidential pardon";
-
-   
-
-    _formType = -1;
-
     return;
 }
 
@@ -49,28 +41,28 @@ Intern & Intern::operator=( Intern const & rhs ) {
 
     std::cout << GREEN << "Intern: Assignment operator called" << RESET << std::endl;
 
-    for ( int i = 0; i < 3; i++ ) {
-        _forms[i] = rhs._forms[i];
-    }
+    if ( this != &rhs ) {}
 
     return *this;
 }
 
 AForm*  Intern::makeForm( std::string formName, std::string formTarget ) {
 
+    std::string forms[3] = { "shrubbery creation", "robotomy request", "presidential pardon"};
+    AForm*      ptr = NULL;
+    int         formType = -1;
+    
     for ( int i = 0; i < 3; i++ ) {
 
-        if ( formName == _forms[i] )
-            _formType = i;
+        if ( formName == forms[i] )
+            formType = i;
     }
 
-    AForm* ptr = nullptr;
-
-    switch ( _formType )
+    switch ( formType )
     {
         case -1:
-            std::cout << RED << "Intern::makeForm Unknown form: " << formName << RESET << std::endl;
-            break;
+            std::cout << RED << "Intern cannot create: " << B_GRAY << formName << RESET << std::endl;
+            return ( NULL );
         case 0:
             ptr = new ShrubberyCreationForm( formTarget );
             break;
@@ -81,8 +73,7 @@ AForm*  Intern::makeForm( std::string formName, std::string formTarget ) {
             ptr = new PresidentialPardonForm( formTarget );
             break;
     }
-
-    _formType = -1;
+    std::cout << GREEN << "Intern creates: " << B_GRAY << formName << RESET << std::endl;
     return ptr;
 }
 

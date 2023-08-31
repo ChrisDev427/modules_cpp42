@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:11:58 by chris             #+#    #+#             */
-/*   Updated: 2023/08/25 15:23:01 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/30 11:25:50 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Character::Character( void ) {
 
-   /*if (printConstDest){*/ std::cout << B_GREEN << "Character -> Default Constructor called" << RESET << std::endl; //}
+   if (printConstDest){ std::cout << B_GREEN << "Character -> Default Constructor called" << RESET << std::endl; }
     
     _name = "default_Name";
     for ( int i = 0; i < 4; i++ ) { _inventory[i] = NULL; }
@@ -25,7 +25,7 @@ Character::Character( void ) {
 
 Character::Character( std::string const & name ) : _name( name ) {
 
-    /*if (printConstDest){*/ std::cout << B_GREEN << "Character -> Parametric Constructor called" << RESET << std::endl; //}
+    if (printConstDest){ std::cout << B_GREEN << "Character -> Parametric Constructor called" << RESET << std::endl; }
     for ( int i = 0; i < 4; i++ ) { _inventory[i] = NULL; }
     _throwedNb = 0;
     
@@ -34,7 +34,7 @@ Character::Character( std::string const & name ) : _name( name ) {
 
 Character::Character( Character const & src ) {
 
-    /*if (printConstDest){*/ std::cout << B_GREEN << "Character -> Copy Constructor called" << RESET << std::endl; //}
+    if (printConstDest){ std::cout << B_GREEN << "Character -> Copy Constructor called" << RESET << std::endl; }
 
     _instanceCopy++;
     std::stringstream ss;
@@ -49,7 +49,7 @@ Character::Character( Character const & src ) {
 
         if ( src._inventory[i] ) {
 
-            /*if (printConstDest){*/ std::cout << GREEN << ITAL << "cloning  _inventory[" << i << "] from " << src._name << " to " << _name << " " << RESET << NORM; //}
+            if (printConstDest){ std::cout << GREEN << ITAL << "cloning  _inventory[" << i << "] from " << src._name << " to " << _name << " " << RESET << NORM; }
             _inventory[i] = src._inventory[i]->clone();
         }
     }
@@ -58,12 +58,12 @@ Character::Character( Character const & src ) {
 
 Character::~Character( void ) {
 
-    /*if (printConstDest){*/ std::cout << B_RED << _name << " Character -> Destructor called" << RESET << std::endl; //}
+    if (printConstDest){ std::cout << B_RED << _name << " Character -> Destructor called" << RESET << std::endl; }
 
     for ( int i = 0; i < 4; i++ ) {
         
         if ( _inventory[i] ) {
-            /*if (printConstDest){*/ std::cout << RED << ITAL << "deleting _inventory[" << i << "] of " << _name << RESET << NORM << std::endl; //}
+            if (printConstDest){ std::cout << RED << ITAL << "deleting _inventory[" << i << "] of " << _name << RESET << NORM << std::endl; }
             delete _inventory[i];
         }
     }
@@ -72,7 +72,7 @@ Character::~Character( void ) {
 
         for ( int i = 0; _throwedMaterias[i]; i++ ) {
             
-            /*if (printConstDest){*/ std::cout << RED << ITAL << "deleting _throwedMaterias[" << i << "] of " << _name << RESET << NORM << std::endl; //}
+            if (printConstDest){ std::cout << RED << ITAL << "deleting _throwedMaterias[" << i << "] of " << _name << RESET << NORM << std::endl; }
             delete _throwedMaterias[i];
             _throwedInMemory--;
         }
@@ -83,13 +83,13 @@ Character::~Character( void ) {
 
 Character & Character::operator=( Character const & rhs ) {
 
-    /*if (printConstDest){*/ std::cout << B_GREEN << "Character -> Assignment operator called" << RESET << std::endl; //}
+    if (printConstDest){ std::cout << B_GREEN << "Character -> Assignment operator called" << RESET << std::endl; }
     
     for ( int i = 0; i < 4; i++ ) {
 
         if ( _inventory[i] ) {
             
-            /*if (printConstDest){*/ std::cout << RED << ITAL << "deleting _inventory[" << i << "] of " << _name << RESET << NORM << std::endl; //}
+            if (printConstDest){ std::cout << RED << ITAL << "deleting _inventory[" << i << "] of " << _name << RESET << NORM << std::endl; }
             delete _inventory[i];
         }
     }
@@ -98,7 +98,7 @@ Character & Character::operator=( Character const & rhs ) {
 
         if ( rhs._inventory[i] ) {
 
-            /*if (printConstDest){*/ std::cout << GREEN << ITAL << "cloning  _inventory[" << i << "] from " << rhs._name << " to " << _name << " " << RESET << NORM; //}
+            if (printConstDest){ std::cout << GREEN << ITAL << "cloning  _inventory[" << i << "] from " << rhs._name << " to " << _name << " " << RESET << NORM; }
             _inventory[i] = rhs._inventory[i]->clone();
         }
     }
@@ -120,7 +120,7 @@ void Character::equip(AMateria* m) {
     if ( m ) {
 
         if ( m->getEquiped() ) {
-            std::cout << B_RED << "Materia [" << m << " " << &m << "] already equiped" << RESET << std::endl;
+            std::cout << B_RED << "Materia [" << m->getType() << " " << m << "] already equiped" << RESET << std::endl;
             return;
         }
         for ( int i = 0; i < 4; i++ ) {
@@ -137,6 +137,9 @@ void Character::equip(AMateria* m) {
                 std::cout << B_GRAY << getName() << RESET << BLUE << ITAL << " _inventory[" << i << "] equiped with " << m->getType() << RESET << NORM << std::endl;
                 std::cout << ORANGE << "***********************************************\n" << RESET << std::endl;
                 return;
+            }
+            else if ( i == 3 ) {
+                std::cout << B_GRAY << _name << " is fully equiped" << std::endl; 
             }
         }
     }

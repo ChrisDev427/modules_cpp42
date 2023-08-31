@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:55:33 by chris             #+#    #+#             */
-/*   Updated: 2023/08/25 14:32:56 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/30 10:03:34 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,29 +31,17 @@ class MateriaSource : virtual public IMateriaSource {
 public:
 
     MateriaSource( void );
-    // MateriaSource( std::string const & type );
-    
     MateriaSource( MateriaSource const & src );
     virtual ~MateriaSource( void );
 
     MateriaSource & operator=( MateriaSource const & rhs );
 
-
-
-
     virtual void        learnMateria(AMateria* m);
     virtual AMateria*   createMateria(std::string const & type);
-
-    virtual void        printLearnedMateria( void ) const;
-    
-
 
 private:
 
     AMateria* _materiaLearned[4];
-    
-
-
 
 };
 

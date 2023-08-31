@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:14:34 by chris             #+#    #+#             */
-/*   Updated: 2023/08/07 08:52:19 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/30 09:04:07 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ std::string Animal::getType( void ) const {
     return this->type;
 }
 
-void Animal::setPtr( std::string str ) const{
+void Animal::setPtr( std::string str ) const {
 
     std::cout << B_ORANGE << "Animal -> setPtr function with param: " << str << RESET << std::endl;
     

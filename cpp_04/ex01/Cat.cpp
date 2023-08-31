@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:14:40 by chris             #+#    #+#             */
-/*   Updated: 2023/08/07 10:00:51 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/30 08:49:29 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,6 @@ void Cat::printArray( void ) const {
 
 void Cat::makeSound() const{
 
-    std::cout << B_CYAN << "type -> " << type << " says: Miaou Miaou Miaou..." << RESET << std::endl;
+    std::cout << B_CYAN << type << " says: Miaou Miaou Miaou..." << RESET << std::endl;
 
 }

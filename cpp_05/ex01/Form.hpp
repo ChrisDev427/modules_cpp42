@@ -6,15 +6,12 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:41:11 by chris             #+#    #+#             */
-/*   Updated: 2023/08/19 17:41:14 by chris            ###   ########.fr       */
+/*   Updated: 2023/08/31 08:53:15 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #ifndef FORM_HPP
 # define FORM_HPP
-
 # include "Bureaucrat.hpp"
 # include <iostream>
 # include <stdexcept>
@@ -55,8 +52,6 @@ class Form {
         std::string getFormState( bool state ) const;
 
         void        beSigned( Bureaucrat & ref );
-
-        
 
     private:
 
