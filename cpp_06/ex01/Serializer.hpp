@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 08:27:35 by chris             #+#    #+#             */
-/*   Updated: 2023/09/04 12:30:03 by chris            ###   ########.fr       */
+/*   Updated: 2023/09/05 08:15:16 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Serializer {
 private:
     Serializer( void );
     Serializer( Serializer const & src );
-    virtual ~Serializer( void );
+    ~Serializer( void );
     Serializer & operator=( Serializer const & rhs );
 public:
     static uintptr_t    serialize( Data* ptr );
