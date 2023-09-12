@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 18:17:09 by chris             #+#    #+#             */
-/*   Updated: 2023/09/05 19:51:34 by chris            ###   ########.fr       */
+/*   Updated: 2023/09/06 18:32:00 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ void easyfind( T array, int value ) {
 
     it = find (array.begin(), array.end(), value);
     if (it == array.end())
-        throw std::invalid_argument ("value not found");
+        throw std::invalid_argument (RED "value not found" RESET);
     else
-        std::cout << "First occurence of " << value << " is " << std::distance(array.begin(), it ) << std::endl;
+        std::cout << B_CYAN << "First occurence of value[" << value << "] is " << std::distance(array.begin(), it ) << RESET << std::endl;
     
 }
-
 #endif /*********************************************************** EASYFIND_HPP */

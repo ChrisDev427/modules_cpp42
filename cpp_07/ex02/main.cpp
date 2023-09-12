@@ -6,13 +6,13 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:04:22 by chris             #+#    #+#             */
-/*   Updated: 2023/09/05 14:09:53 by chris            ###   ########.fr       */
+/*   Updated: 2023/09/12 07:38:21 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Array.hpp"
-#define MAX_VAL 10
+#define MAX_VAL 750
 
 
 void myTest( void ) {
@@ -90,7 +90,7 @@ void myTest( void ) {
 
 void subjectTest( void ) {
 
-     Array<int> numbers(MAX_VAL);
+    Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
     for (int i = 0; i < MAX_VAL; i++)
@@ -142,6 +142,6 @@ int main(int, char**)
 {
     myTest();
     // subjectTest();
-    // system("leaks prog");
+
     return 0;
 }

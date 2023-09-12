@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:14:45 by chris             #+#    #+#             */
-/*   Updated: 2023/09/04 17:13:51 by chris            ###   ########.fr       */
+/*   Updated: 2023/09/11 11:51:32 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main( void ) {
     for ( size_t i = 0; i < size; i++ ) {
         strs[i] = "Hello World";
     }
-    iter( strs, size, ::print );
+    iter( strs, size, print<std::string> );
 
     std::cout << "\n********* INT TAB    *************************************\n" << std::endl;
 
@@ -31,7 +31,7 @@ int main( void ) {
     for ( size_t i = 0; i < size; i++ ) {
         intTab[i] = 2 * i;
     }
-    iter( intTab, size, ::print );
+    iter( intTab, size, print<int> );
     
     std::cout << "\n********* FLOAT TAB  *************************************\n" << std::endl;
 
@@ -39,7 +39,7 @@ int main( void ) {
     for ( size_t i = 0; i < size; i++ ) {
         floatTab[i] = 2.89f * i;
     }
-    iter( floatTab, size, ::print );
+    iter( floatTab, size, print<float> );
 
    
     
