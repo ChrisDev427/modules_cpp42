@@ -6,32 +6,26 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:04:22 by chris             #+#    #+#             */
-/*   Updated: 2023/09/19 17:01:22 by chris            ###   ########.fr       */
+/*   Updated: 2023/09/14 10:59:03 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
 
-int main( int ac, char* av[] )
+int main( int ac, char** av )
 {
 
     if ( ac == 2 ) {
-
-        std::ifstream file( av[1] );
         
-        if (!file.is_open()) {
-            std::cerr << RED "Error: could not open file." RESET << av[1] << std::endl;
-            return -1;
-        }
-        std::map<std::string, double> data;
-        fillMap( data );
-        getCompareInput( data, file );
+        try { RPN calculate( av[1] ); }
+        catch( std::exception& e ) { std::cerr << e.what() << std::endl; }
+      
     }
+    
     else {
-
-        std::cerr << RED "Error: could not open file." RESET << std::endl;
+        std::cerr << "Error" << std::endl;
         return -1;
     }
-    // system("leaks prog");
+    // system("leaks RPN");
     return 0;
 }

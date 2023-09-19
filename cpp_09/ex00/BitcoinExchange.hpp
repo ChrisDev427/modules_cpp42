@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
 # include <iostream>
+# include <iomanip>
 # include <fstream>
 # include <sstream>
 # include <ctime>       
@@ -26,20 +25,12 @@
 # include <algorithm>
 # include "policeColor.hpp"
 
-
-typedef struct  s_data {
-
-    std::map<std::string, double> dataFile;
-    
-    
-}               t_data;
-
-void fillMap( t_data* ptr );
-void getCompareInput( t_data* ptr,  std::ifstream & ifs );
-void valueComp( t_data* ptr, std::string date, double value );
-
+void fillMap( std::map<std::string, double> & map );
+void getCompareInput(std::map<std::string, double> & map,  std::ifstream & ifs );
+void valueComp( std::map<std::string, double> & map, std::string date, double value );
+bool isDateValid( const std::string & dateStr );
+bool isArgValid( const std::string & strValue );
 void printMap( std::map<std::string, double> map );
-std::map<std::string, double>::const_iterator findDate( std::map<std::string, double> map, std::string toFind );
-bool isDateValid(const std::string& dateStr);
+void findDate( std::map<std::string, double> & map, std::map<std::string, double>::const_iterator & iter, std::string toFind );
 
 #endif /************************************************************* BITCOINEXCHANGE_HPP*/

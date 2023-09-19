@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/19 08:48:04 by chris             #+#    #+#             */
+/*   Updated: 2023/09/19 08:50:05 by chris            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Span.hpp"
 
@@ -26,7 +36,7 @@ Span & Span::operator=( Span const & rhs ) {
     return *this;
 }
 
-void Span::arrayCheck( void ) {
+void Span::arrayCheck( void ) const{
 
     if ( _array.empty() ) { throw std::logic_error("Std::except: shortestSpan: [empty array] "); }
     if ( _array.size() == 1 ) { throw std::logic_error("Std::except: shortestSpan: [array size is 1] "); }
@@ -34,33 +44,11 @@ void Span::arrayCheck( void ) {
 
 void Span::addNumber( int value ) {
 
-    try {
-        if ( _array.size() < _n ) { _array.push_back( value ); }
-        else { throw std::logic_error("Std::except: size max reached"); }
-    }
-    catch ( std::exception& e) { std::cerr << B_RED << e.what() << RESET << std::endl; }
+    if ( _array.size() < _n ) { _array.push_back( value ); }
+    else { throw std::logic_error("Std::except: size max reached"); }
 }
 
-void Span::addSequence( unsigned int n ) {
-
-    std::srand(time(NULL));
-    std::vector<int>::iterator it = _array.end();
-    size_t sizeLeft = _n - _array.size();
-    
-    size_t toInsert;
-    if ( n > sizeLeft ) { toInsert = sizeLeft; }
-    else  { toInsert = n; }
-
-    int tmp[toInsert];
-    for ( size_t i = 0; i < toInsert; i++ ) { tmp[i] = rand() % 1000 - 500; }
-    _array.insert( it, tmp , tmp+toInsert );
-  
-    try { if ( n > sizeLeft ) { throw std::logic_error("Std::except: size max reached"); } }
-    catch ( std::exception& e) { std::cerr << B_RED << e.what() << RESET << std::endl; }
-}
-
-
-int long Span::shortestSpan( void ) {
+int long Span::shortestSpan( void ) const{
 
     try { arrayCheck(); }
     catch ( std::exception& e ) { std::cerr << B_RED << e.what() << RESET; return -1; }
@@ -76,7 +64,7 @@ int long Span::shortestSpan( void ) {
     return ret;
 }
 
-int long Span::longestSpan( void ) {
+int long Span::longestSpan( void ) const{
 
     try { arrayCheck(); }
     catch ( std::exception& e ) { std::cerr << B_RED << e.what() << RESET; return -1; }
@@ -90,15 +78,15 @@ int long Span::longestSpan( void ) {
     return ( max - min );
 }
 
-void Span::clearArray( void ) { _array.clear(); }
+void Span::arrayClear( void ) { _array.clear(); }
+size_t Span::arraySize( void ) const{ return _array.size(); }
 
-
-void Span::print( std::string instName ) {
+void Span::print( std::string instName ) const{
 
     std::cout << B_CYAN "print -> [" << instName << "]" << RESET << std::endl;
     if ( _array.size() == 0 ) { std::cout << GRAY IT << "Empty array" << RESET ST << std::endl; return; }
     for ( size_t i = 0; i < _array.size(); i++ ) {
-        std::cout << GRAY IT << "array[" << i << "] = " << B_CYAN << _array[i] << RESET << std::endl;
+        std::cout << B_GRAY IT << "array[" << i << "] = " << B_CYAN << _array[i] << std::endl;
     }
     std::cout << RESET ST << std::endl;
 }
