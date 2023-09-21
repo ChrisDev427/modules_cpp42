@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:04:22 by chris             #+#    #+#             */
-/*   Updated: 2023/09/14 10:59:03 by chris            ###   ########.fr       */
+/*   Updated: 2023/09/21 08:11:03 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ int main( int ac, char** av )
         std::cerr << "Error" << std::endl;
         return -1;
     }
-    // system("leaks RPN");
     return 0;
 }

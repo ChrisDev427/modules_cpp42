@@ -20,17 +20,21 @@
 # include <ctime>       
 # include <locale>        
 # include <map>
+# include <cstring>
 # include <string>
 # include <stdexcept>
 # include <algorithm>
+# include <dirent.h>
 # include "policeColor.hpp"
 
-void fillMap( std::map<std::string, double> & map );
-void getCompareInput(std::map<std::string, double> & map,  std::ifstream & ifs );
-void valueComp( std::map<std::string, double> & map, std::string date, double value );
-bool isDateValid( const std::string & dateStr );
-bool isArgValid( const std::string & strValue );
-void printMap( std::map<std::string, double> map );
-void findDate( std::map<std::string, double> & map, std::map<std::string, double>::const_iterator & iter, std::string toFind );
+std::string     findDataBase( void );
+void            checkArgFile( char* str );
+void            fillMap( std::map<std::string, double> & map );
+void            getCompareInput(std::map<std::string, double> & map,  std::ifstream & ifs );
+void            valueComp( std::map<std::string, double> & map, std::string date, double value );
+void            findDate( std::map<std::string, double> & map, std::map<std::string, double>::const_iterator & iter, std::string toFind );
+bool            isArgValid( const std::string & strValue );
+bool            isDateValid( const std::string & dateStr );
+void            printMap( std::map<std::string, double> map );
 
 #endif /************************************************************* BITCOINEXCHANGE_HPP*/
