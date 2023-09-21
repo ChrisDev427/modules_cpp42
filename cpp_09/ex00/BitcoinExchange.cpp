@@ -6,7 +6,7 @@
 /*   By: chris <chris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 10:27:45 by chris             #+#    #+#             */
-/*   Updated: 2023/09/21 07:59:50 by chris            ###   ########.fr       */
+/*   Updated: 2023/09/21 18:11:32 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,9 @@ void findDate( std::map<std::string, double> & map, std::map<std::string, double
             break;
         }
     }
-    iter = --it;
+    if ( it != map.begin() ) {
+    	iter = --it;
+    }
 }
 
 bool isArgValid( const std::string & strValue ) {
